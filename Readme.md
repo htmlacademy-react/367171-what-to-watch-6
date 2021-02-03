@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Юлия Максимова](https://up.htmlacademy.ru/react/6/user/367171).
-* Наставник: `Неизвестно`.
+* Наставник: [Владимир Турецкий](https://htmlacademy.ru/profile/id439019).
 
 ---
 
