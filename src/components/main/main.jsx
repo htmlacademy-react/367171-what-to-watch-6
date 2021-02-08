@@ -133,7 +133,7 @@ MainPage.propTypes = {
     genre: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     background: PropTypes.string.isRequired,
-    isActive: PropTypes.boolean.isRequired
+    isActive: PropTypes.boolean
   })
 };
 
