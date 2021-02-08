@@ -5,8 +5,7 @@ import MovieCard from "../movie-card/movie-card";
 
 const MainPage = ({items, currentMovie}) => {
   return (
-    <React.Fragment>
-
+    <>
       <div className="visually-hidden">
         <svg xmlns="http://www.w3.org/2000/svg">
           <symbol id="add" viewBox="0 0 19 20">
@@ -90,8 +89,8 @@ const MainPage = ({items, currentMovie}) => {
           </ul>
 
           <div className="catalog__movies-list">
-            {items.map(({key, title, img}) => (
-              <MovieCardPreview key={key} title={title} img={img}/>
+            {items.map(({id, title, img}) => (
+              <MovieCardPreview key={id} title={title} img={img}/>
             ))}
           </div>
 
@@ -114,15 +113,28 @@ const MainPage = ({items, currentMovie}) => {
           </div>
         </footer>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
 MainPage.propTypes = {
-  items: PropTypes.array.isRequired,
+  items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        img: PropTypes.number.isRequired
+      })
+  ).isRequired,
   title: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
-  currentMovie: PropTypes.object.isRequired
+  currentMovie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    background: PropTypes.string.isRequired,
+    isActive: PropTypes.boolean.isRequired
+  })
 };
 
 export default MainPage;

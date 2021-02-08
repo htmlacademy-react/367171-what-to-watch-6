@@ -21,7 +21,7 @@ const movieItems = [
   {title: `Midnight Special`, img: `img/midnight-special.jpg`, id: 19},
   {
     title: `The Grand Budapest Hotel`,
-    gerne: `Drama`,
+    genre: `Drama`,
     releaseDate: `2014`,
     poster: `img/the-grand-budapest-hotel-poster.jpg`,
     background: `img/bg-the-grand-budapest-hotel.jpg`,
