@@ -1,15 +1,26 @@
 import React from 'react';
-import MainPage from "../pages/main/main";
 import PropTypes from "prop-types";
+import MovieCard from "../../sections/movie-card/movie-card";
+import InnerLayout from "../../layouts/inner-layout/inner-layout";
+import MainLayout from "../../layouts/main-layout/main-layout";
+import PageFooter from "../../sections/page-footer/page-footer";
+import Catalog from "../../sections/catalog/catalog";
 
-const App = ({movieItems, genresItems, currentMovie}) => {
-
+const MainPage = ({movieItems, currentMovie, genresItems}) => {
   return (
-    <MainPage genresItems={genresItems} movieItems={movieItems} currentMovie={currentMovie}/>
+    <MainLayout>
+      <MovieCard {...currentMovie}/>
+
+      <InnerLayout className={`page-content`}>
+        <Catalog movieItems={movieItems} genresItems={genresItems}/>
+        <PageFooter/>
+      </InnerLayout>
+
+    </MainLayout>
   );
 };
 
-App.propTypes = {
+MainPage.propTypes = {
   movieItems: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -35,4 +46,4 @@ App.propTypes = {
   })
 };
 
-export default App;
+export default MainPage;
