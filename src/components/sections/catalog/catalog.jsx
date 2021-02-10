@@ -4,12 +4,12 @@ import MoviesList from "../../blocks/movies-list/movies-list";
 import PropTypes from "prop-types";
 import GenresList from "../../blocks/genres-list/genres-list";
 
-const Catalog = ({movieItems, genresItems}) => {
+const Catalog = ({movieItems, genresItems, filter = false}) => {
   return (
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <GenresList items={genresItems}/>
+      {filter ? <GenresList items={genresItems}/> : null}
 
       <MoviesList items={movieItems}/>
 
@@ -20,6 +20,7 @@ const Catalog = ({movieItems, genresItems}) => {
 };
 
 Catalog.propTypes = {
+  filter: PropTypes.bool,
   movieItems: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,

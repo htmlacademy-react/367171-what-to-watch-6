@@ -2,11 +2,12 @@ import React from 'react';
 import MainPage from "../pages/main/main";
 import PropTypes from "prop-types";
 import NotFound from "../pages/not-found/not-found";
+import MyList from "../pages/my-list/my-list";
 
 const App = ({movieItems, genresItems, currentMovie}) => {
 
   return (
-    <NotFound/>
+    <MyList/>
     // <MainPage genresItems={genresItems} movieItems={movieItems} currentMovie={currentMovie}/>
   );
 };

@@ -4,10 +4,10 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 import UserBlock from "../../blocks/user-block/user-block";
 
-const PageHeader = ({className, children, isLogin = true}) => {
+const PageHeader = ({className, children, isLogin = true, router = null}) => {
   return (
     <header className={classnames(`page-header`, className)}>
-      <Logo/>
+      <Logo router={router}/>
       {children}
       {isLogin ? <UserBlock/> : null}
     </header>
@@ -15,6 +15,7 @@ const PageHeader = ({className, children, isLogin = true}) => {
 };
 
 PageHeader.propTypes = {
+  router: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.node,
   isLogin: PropTypes.bool

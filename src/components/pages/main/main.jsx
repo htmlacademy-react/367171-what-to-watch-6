@@ -12,7 +12,7 @@ const MainPage = ({movieItems, currentMovie, genresItems}) => {
       <MovieCard {...currentMovie}/>
 
       <InnerLayout className={`page-content`}>
-        <Catalog movieItems={movieItems} genresItems={genresItems}/>
+        <Catalog movieItems={movieItems} genresItems={genresItems} filter={true}/>
         <PageFooter/>
       </InnerLayout>
 
