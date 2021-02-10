@@ -3,11 +3,12 @@ import MainPage from "../pages/main/main";
 import PropTypes from "prop-types";
 import NotFound from "../pages/not-found/not-found";
 import MyList from "../pages/my-list/my-list";
+import Player from "../pages/player/player";
 
 const App = ({movieItems, genresItems, currentMovie}) => {
 
   return (
-    <MyList/>
+    <Player/>
     // <MainPage genresItems={genresItems} movieItems={movieItems} currentMovie={currentMovie}/>
   );
 };
