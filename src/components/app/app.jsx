@@ -4,11 +4,12 @@ import PropTypes from "prop-types";
 import NotFound from "../pages/not-found/not-found";
 import MyList from "../pages/my-list/my-list";
 import Player from "../pages/player/player";
+import SignIn from "../pages/sign-in/sign-in";
 
 const App = ({movieItems, genresItems, currentMovie}) => {
 
   return (
-    <Player/>
+    <SignIn/>
     // <MainPage genresItems={genresItems} movieItems={movieItems} currentMovie={currentMovie}/>
   );
 };
