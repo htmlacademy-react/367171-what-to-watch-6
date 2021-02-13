@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserBlock = ()=> {
+const UserBlock = () => {
   return (
     <div className="user-block">
       <div className="user-block__avatar">
