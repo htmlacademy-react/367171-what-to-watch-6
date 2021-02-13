@@ -6,11 +6,12 @@ import MyList from "../pages/my-list/my-list";
 import Player from "../pages/player/player";
 import SignIn from "../pages/sign-in/sign-in";
 import MoviePage from "../pages/movie-page/movie-page";
+import AddReview from "../pages/add-review/add-review";
 
 const App = ({movieItems, genresItems, currentMovie}) => {
 
   return (
-    <MoviePage/>
+    <AddReview/>
     // <MainPage genresItems={genresItems} movieItems={movieItems} currentMovie={currentMovie}/>
   );
 };
