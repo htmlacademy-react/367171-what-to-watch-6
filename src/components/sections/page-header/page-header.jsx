@@ -4,6 +4,7 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 import UserBlock from "../../blocks/user-block/user-block";
 import {Link} from "react-router-dom";
+import {RoutePath} from "../../constants/routes";
 
 const PageHeader = ({className, children, title, isLogin = true, activeLink}) => {
   return (
@@ -14,7 +15,7 @@ const PageHeader = ({className, children, title, isLogin = true, activeLink}) =>
         <nav className="breadcrumbs">
           <ul className="breadcrumbs__list">
             <li className="breadcrumbs__item">
-              <Link to="/films/:id" className="breadcrumbs__link">{title}</Link>
+              <Link to={RoutePath.FILM_ID} className="breadcrumbs__link">{title}</Link>
             </li>
             <li className="breadcrumbs__item">
               <a className="breadcrumbs__link">Add review</a>
