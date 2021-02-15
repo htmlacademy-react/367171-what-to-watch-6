@@ -7,7 +7,7 @@ const Wrapper = ({type, children}) => {
   return (
     (type === `full` || type === `review`) ? (
       <div className={classnames({[`movie-card__hero`]: type === `full`, [`movie-card__header`]: type === `review`})}>{children}</div>
-    ) : null
+    ) : children
   );
 };
 
@@ -36,7 +36,7 @@ MovieCardHeader.propTypes = {
 
 const MovieCard = ({type, title, poster, background, genre, releaseDate}) => {
 
-  const router = type === `review` ? `main.html` : null;
+  const activeLink = type === `review` || type === `full` ? true : false;
 
   const movieName = type === `review` ? title : null;
 
@@ -50,7 +50,7 @@ const MovieCard = ({type, title, poster, background, genre, releaseDate}) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <PageHeader title={movieName} className={`movie-card__head`} router={router}/>
+        <PageHeader title={movieName} className={`movie-card__head`} activeLink={activeLink}/>
 
         {type === `full` ? (
           <div className="movie-card__wrap">
@@ -124,8 +124,7 @@ const MovieCard = ({type, title, poster, background, genre, releaseDate}) => {
             </div>
 
             <div className="add-review__text">
-              <textarea className="add-review__textarea" name="review-text" id="review-text"
-                        placeholder="Review text"></textarea>
+              <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
               <div className="add-review__submit">
                 <button className="add-review__btn" type="submit">Post</button>
               </div>
@@ -136,8 +135,7 @@ const MovieCard = ({type, title, poster, background, genre, releaseDate}) => {
       ) : (<div className={classnames(`movie-card__wrap`, {[`movie-card__translate-top`]: type === `full`})}>
         <div className="movie-card__info">
           <div className={classnames(`movie-card__poster`, {[`movie-card__poster--big`]: type === `full`})}>
-            <img src={poster} alt="The Grand Budapest Hotel poster" width="218"
-                 height="327"/>
+            <img src={poster} alt="The Grand Budapest Hotel poster" width="218" height="327"/>
           </div>
 
           <div className="movie-card__desc">
@@ -207,7 +205,7 @@ const MovieCard = ({type, title, poster, background, genre, releaseDate}) => {
 };
 
 MovieCard.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   title: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   background: PropTypes.string.isRequired,

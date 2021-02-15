@@ -12,7 +12,7 @@ const MyList = () => {
   return (
     <MainLayout>
       <InnerLayout className={`user-page`}>
-        <PageHeader router={`mail.html`} className={`user-page__head`}/>
+        <PageHeader activeLink={true} className={`user-page__head`}/>
         <Catalog movieItems={items}/>
         <PageFooter/>
       </InnerLayout>

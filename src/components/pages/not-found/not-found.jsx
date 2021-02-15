@@ -3,6 +3,7 @@ import MainLayout from "../../layouts/main-layout/main-layout";
 import InnerLayout from "../../layouts/inner-layout/inner-layout";
 import PageFooter from "../../sections/page-footer/page-footer";
 import PageHeader from "../../sections/page-header/page-header";
+import {Link} from "react-router-dom";
 
 const pageHeaderHeight = `98px`;
 const pageFooterHeight = `94px`;
@@ -16,8 +17,11 @@ const NotFound = () => {
     <MainLayout>
       <InnerLayout className={`page-content`}>
         <PageHeader isLogin={false}/>
-        <div style={{display: `flex`, justifyContent: `center`, height: pageContentHeight}}>
+        <div style={{display: `flex`, flexDirection: `column`, justifyContent: `center`, alignItems: `center`, height: pageContentHeight}}>
           <h1>404. Page not found</h1>
+          <h2>
+            <Link to="/" style={{color: `#c9b37e`, textDecoration: `none`}}>Вернуться на главную</Link>
+          </h2>
         </div>
         <PageFooter/>
       </InnerLayout>

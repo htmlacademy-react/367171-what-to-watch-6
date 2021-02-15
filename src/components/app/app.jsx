@@ -7,12 +7,25 @@ import Player from "../pages/player/player";
 import SignIn from "../pages/sign-in/sign-in";
 import MoviePage from "../pages/movie-page/movie-page";
 import AddReview from "../pages/add-review/add-review";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 const App = ({movieItems, genresItems, currentMovie}) => {
 
   return (
-    <AddReview/>
-    // <MainPage genresItems={genresItems} movieItems={movieItems} currentMovie={currentMovie}/>
+    <Router>
+      <Switch>
+        <Route path="/" exact render={
+          () => <MainPage genresItems={genresItems} movieItems={movieItems} currentMovie={currentMovie}/>
+        }/>
+        <Route path="/login" exact component={SignIn}/>
+        <Route path="/mylist" exact component={MyList}/>
+        <Route path="/player/:id" component={Player}/>
+        <Route path="/films/:id" exact component={MoviePage}/>
+        <Route path="/films/:id/review" component={AddReview} />
+        <Route component={NotFound}/>
+      </Switch>
+    </Router>
+
   );
 };
 

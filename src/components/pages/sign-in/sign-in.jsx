@@ -10,7 +10,7 @@ const SignIn = () => {
     <MainLayout>
       <InnerLayout className={`user-page`}>
 
-        <PageHeader isLogin={false} router={`main.html`} className={`user-page__head`}>
+        <PageHeader isLogin={false} activeLink={true} className={`user-page__head`}>
           <h1 className="page-title user-page__title">Sign in</h1>
         </PageHeader>
 
