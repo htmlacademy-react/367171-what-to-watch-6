@@ -23,7 +23,7 @@ GenresList.propTypes = {
         label: PropTypes.string.isRequired,
         selectedItem: PropTypes.bool
       })
-  ).isRequired,
+  ),
 };
 
 export default GenresList;
