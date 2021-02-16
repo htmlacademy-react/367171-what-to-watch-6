@@ -2,22 +2,22 @@ import React from "react";
 import MovieCardPreview from "../movie-card-preview/movie-card-preview";
 import PropTypes from "prop-types";
 
-const MoviesList = ({items}) => {
+const MoviesList = ({movieItems}) => {
   return (
     <div className="catalog__movies-list">
-      {items.map(({id, title, img}) => (
-        <MovieCardPreview key={id} title={title} img={img}/>
+      {movieItems.map(({id, name, previewImage}) => (
+        <MovieCardPreview key={id} name={name} previewImage={previewImage}/>
       ))}
     </div>
   );
 };
 
 MoviesList.propTypes = {
-  items: PropTypes.arrayOf(
+  movieItems: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired
+        id: PropTypes.number,
+        name: PropTypes.string,
+        previewImage: PropTypes.string
       })
   ).isRequired,
 };

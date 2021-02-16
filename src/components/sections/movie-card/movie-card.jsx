@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PageHeader from "../page-header/page-header";
 import classnames from "classnames";
+import {RoutePath} from "../../constants/routes";
+import {Link} from "react-router-dom";
 
 const Wrapper = ({type, children}) => {
   return (
@@ -16,36 +18,36 @@ Wrapper.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const MovieCardHeader = ({title, genre, releaseDate}) => {
+const MovieCardHeader = ({name, genre, released}) => {
   return (
     <>
-      <h2 className="movie-card__title">{title}</h2>
+      <h2 className="movie-card__title">{name}</h2>
       <p className="movie-card__meta">
         <span className="movie-card__genre">{genre}</span>
-        <span className="movie-card__year">{releaseDate}</span>
+        <span className="movie-card__year">{released}</span>
       </p>
     </>
   );
 };
 
 MovieCardHeader.propTypes = {
-  title: PropTypes.string,
+  name: PropTypes.string,
   genre: PropTypes.string,
-  releaseDate: PropTypes.number,
+  released: PropTypes.number,
 };
 
-const MovieCard = ({type, title, poster, background, genre, releaseDate}) => {
+const MovieCard = ({type, name, posterImage, backgroundImage, genre, released}) => {
 
   const activeLink = type === `review` || type === `full` ? true : false;
 
-  const movieName = type === `review` ? title : null;
+  const movieName = type === `review` ? name : null;
 
   return (
     <section className={classnames(`movie-card`, {[`movie-card--full`]: type === `full` || type === `review`})}>
 
       <Wrapper type={type}>
         <div className="movie-card__bg">
-          <img src={background} alt={title}/>
+          <img src={backgroundImage} alt={name}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -55,7 +57,7 @@ const MovieCard = ({type, title, poster, background, genre, releaseDate}) => {
         {type === `full` ? (
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <MovieCardHeader title={title} genre={genre} releaseDate={releaseDate}/>
+              <MovieCardHeader name={name} genre={genre} released={released}/>
 
               <div className="movie-card__buttons">
                 <button className="btn btn--play movie-card__button" type="button">
@@ -71,7 +73,7 @@ const MovieCard = ({type, title, poster, background, genre, releaseDate}) => {
                   <span>My list</span>
                 </button>
 
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                <Link to={RoutePath.FILM_REVIEW} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -79,8 +81,7 @@ const MovieCard = ({type, title, poster, background, genre, releaseDate}) => {
 
         {type === `review` ? (
           <div className="movie-card__poster movie-card__poster--small">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
-              height="327"/>
+            <img src={posterImage} alt={name} width="218" height="327"/>
           </div>
         ) : null}
 
@@ -135,7 +136,7 @@ const MovieCard = ({type, title, poster, background, genre, releaseDate}) => {
       ) : (<div className={classnames(`movie-card__wrap`, {[`movie-card__translate-top`]: type === `full`})}>
         <div className="movie-card__info">
           <div className={classnames(`movie-card__poster`, {[`movie-card__poster--big`]: type === `full`})}>
-            <img src={poster} alt="The Grand Budapest Hotel poster" width="218" height="327"/>
+            <img src={posterImage} alt={name} width="218" height="327"/>
           </div>
 
           <div className="movie-card__desc">
@@ -180,7 +181,7 @@ const MovieCard = ({type, title, poster, background, genre, releaseDate}) => {
               </>
             ) : (
               <>
-                <MovieCardHeader title={title} genre={genre} releaseDate={releaseDate}/>
+                <MovieCardHeader name={name} genre={genre} released={released}/>
                 <div className="movie-card__buttons">
                   <button className="btn btn--play movie-card__button" type="button">
                     <svg viewBox="0 0 19 19" width="19" height="19">
@@ -205,12 +206,22 @@ const MovieCard = ({type, title, poster, background, genre, releaseDate}) => {
 };
 
 MovieCard.propTypes = {
+  ...MovieCardHeader.propTypes,
   type: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
-  background: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.number.isRequired
+  posterImage: PropTypes.string,
+  previewImage: PropTypes.string,
+  backgroundImage: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  description: PropTypes.string,
+  rating: PropTypes.number,
+  scoresCount: PropTypes.number,
+  director: PropTypes.string,
+  starring: PropTypes.arrayOf(PropTypes.string),
+  runTime: PropTypes.number,
+  id: PropTypes.number,
+  isFavorite: PropTypes.bool,
+  videoLink: PropTypes.string,
+  previewVideoLink: PropTypes.string
 };
 
 export default MovieCard;

@@ -1,15 +1,14 @@
 import React from "react";
 import MainLayout from "../../layouts/main-layout/main-layout";
 import MovieCard from "../../sections/movie-card/movie-card";
-import {movieItems} from "../../../mocks/movie-items";
+import promoMovie from "../../../mocks/promo-movie";
 
-const [currentMovie] = movieItems.filter((item) => item.isActive);
-const {background, genre, releaseDate, poster, title} = currentMovie;
+const {backgroundImage, genre, released, posterImage, name} = promoMovie;
 
 const AddReview = () => {
   return (
     <MainLayout>
-      <MovieCard type="review" background={background} genre={genre} releaseDate={releaseDate} poster={poster} title={title}/>
+      <MovieCard type="review" backgroundImage={backgroundImage} genre={genre} released={released} posterImage={posterImage} name={name}/>
     </MainLayout>
   );
 };
