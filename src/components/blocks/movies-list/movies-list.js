@@ -6,7 +6,7 @@ const MoviesList = ({movieItems}) => {
   return (
     <div className="catalog__movies-list">
       {movieItems.map(({id, name, previewImage}) => (
-        <MovieCardPreview key={id} name={name} previewImage={previewImage}/>
+        <MovieCardPreview id={id} key={id} name={name} previewImage={previewImage}/>
       ))}
     </div>
   );
@@ -15,7 +15,6 @@ const MoviesList = ({movieItems}) => {
 MoviesList.propTypes = {
   movieItems: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number,
         name: PropTypes.string,
         previewImage: PropTypes.string
       })

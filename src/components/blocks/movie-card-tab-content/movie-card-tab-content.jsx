@@ -23,9 +23,9 @@ const MovieCardTabContent = ({rating, scoresCount, description, director, starri
 
 MovieCardTabContent.propTypes = {
   ...MovieCardRating.propTypes,
-  description: PropTypes.string.isRequired,
-  director: PropTypes.string.isRequired,
-  starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+  description: PropTypes.string,
+  director: PropTypes.string,
+  starring: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default MovieCardTabContent;

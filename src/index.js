@@ -7,6 +7,6 @@ import promoMovie from "./mocks/promo-movie";
 
 
 ReactDOM.render(
-    <App genresItems={genresItems} movieItems={movieItems} currentMovie={promoMovie}/>,
+    <App genresItems={genresItems} movieItems={movieItems} promoMovie={promoMovie}/>,
     document.querySelector(`#root`)
 );

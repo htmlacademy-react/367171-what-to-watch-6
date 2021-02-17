@@ -34,8 +34,8 @@ const MovieCardRating = ({rating, scoresCount}) => {
 };
 
 MovieCardRating.propTypes = {
-  rating: PropTypes.number.isRequired,
-  scoresCount: PropTypes.number.isRequired,
+  rating: PropTypes.number,
+  scoresCount: PropTypes.number,
 };
 
 export default MovieCardRating;
