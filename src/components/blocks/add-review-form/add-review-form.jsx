@@ -1,9 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 
 const AddReviewForm = () => {
+
+  const [addReview, setReview] = useState(``);
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+  }
+
+  const handleFieldChange = (evt) => {
+    const {value} = evt.target;
+    setReview({...addReview, value});
+  };
+
   return (
     <div className="add-review">
-      <form action="#" className="add-review__form">
+      <form action="#" className="add-review__form" onSubmit={handleSubmit}>
         <div className="rating">
           <div className="rating__stars">
             <input className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
@@ -39,7 +51,11 @@ const AddReviewForm = () => {
         </div>
 
         <div className="add-review__text">
-          <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
+          <textarea onChange={handleFieldChange}
+            className="add-review__textarea"
+            name="review-text"
+            id="review-text"
+            placeholder="Review text"></textarea>
           <div className="add-review__submit">
             <button className="add-review__btn" type="submit">Post</button>
           </div>
