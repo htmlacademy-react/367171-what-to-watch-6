@@ -1,6 +1,6 @@
 import React from "react";
-import MovieCardNav from "../movie-card-nav/movie-card-nav";
-import MovieCardTabContent from "../movie-card-tab-content/movie-card-tab-content";
+import MovieCardNav from "./movie-card-nav/movie-card-nav";
+import MovieCardTabContent from "./movie-card-tab-content/movie-card-tab-content";
 
 const MovieCardTabs = ({description, director, starring, scoresCount, rating}) => {
   return (

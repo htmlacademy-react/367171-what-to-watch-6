@@ -6,10 +6,10 @@ import PageFooter from "../../sections/page-footer/page-footer";
 import Catalog from "../../sections/catalog/catalog";
 
 const MainPage = ({movieItems, promoMovie, genresItems}) => {
+
   return (
     <MainLayout>
-      <MovieCard {...promoMovie}/>
-
+      <MovieCard type="short" currentMovie={promoMovie}/>
       <InnerLayout className={`page-content`}>
         <Catalog movieItems={movieItems} genresItems={genresItems} filter={true}/>
         <PageFooter/>

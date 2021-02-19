@@ -8,12 +8,14 @@ import Link from "../../blocks/link/link";
 import {useParams} from "react-router";
 
 const PageHeader = ({className, children, title, isLogin = true, activeLink}) => {
+
   const {id} = useParams();
+
   return (
     <header className={classnames(`page-header`, className)}>
       <Logo activeLink={activeLink}/>
       {children}
-      {title ? (
+      {title && (
         <nav className="breadcrumbs">
           <ul className="breadcrumbs__list">
             <li className="breadcrumbs__item">
@@ -24,7 +26,7 @@ const PageHeader = ({className, children, title, isLogin = true, activeLink}) =>
             </li>
           </ul>
         </nav>
-      ) : null}
+      )}
       {isLogin ? <UserBlock/> : null}
     </header>
   );

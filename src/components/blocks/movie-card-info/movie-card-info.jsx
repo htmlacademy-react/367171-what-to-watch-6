@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MovieCardButtons from "../movie-card-buttons/movie-card-buttons";
+import MovieCardButtons from "./movie-card-buttons/movie-card-buttons";
 
 const MovieCardInfo = ({fullVersion, name, genre, released}) => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MovieCardRating from "../movie-card-rating/movie-card-rating";
+import MovieCardRating from "../../add-review-form/movie-card-rating/movie-card-rating";
 
 const getStringFromArray = (array, sign) => {
   return array.join(`${sign} `);

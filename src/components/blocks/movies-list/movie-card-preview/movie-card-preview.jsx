@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {RoutePath} from "../../constants/routes";
-import Link from "../link/link";
+import {RoutePath} from "../../../constants/routes";
+import Link from "../../link/link";
 
 const MovieCardPreview = ({id, name, previewImage}) => {
   return (

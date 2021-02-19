@@ -1,5 +1,5 @@
 import React from "react";
-import MovieCardPreview from "../movie-card-preview/movie-card-preview";
+import MovieCardPreview from "./movie-card-preview/movie-card-preview";
 import PropTypes from "prop-types";
 
 const MoviesList = ({movieItems}) => {
