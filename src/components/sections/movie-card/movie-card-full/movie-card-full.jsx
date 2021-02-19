@@ -4,9 +4,7 @@ import MovieCardInfo from "../../../blocks/movie-card-info/movie-card-info";
 import MovieCardTabs from "../../../blocks/movie-card-tabs/movie-card-tabs";
 import MovieCardPoster from "../../../blocks/movie-card-poster/movie-card-poster";
 import PropTypes from "prop-types";
-import MovieCard from "../movie-card";
 import MovieCardTabContent from "../../../blocks/movie-card-tabs/movie-card-tab-content/movie-card-tab-content";
-import MovieCardShort from "../movie-card-short/movie-card-short";
 
 const MovieCardFull = ({name, posterImage, backgroundImage, description, rating, scoresCount, director, starring, genre, released}) => {
   return (

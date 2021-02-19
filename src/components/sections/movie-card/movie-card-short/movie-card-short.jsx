@@ -2,7 +2,6 @@ import React from "react";
 import PageHeader from "../../page-header/page-header";
 import MovieCardInfo from "../../../blocks/movie-card-info/movie-card-info";
 import MovieCardPoster from "../../../blocks/movie-card-poster/movie-card-poster";
-import MovieCard from "../movie-card";
 import PropTypes from "prop-types";
 import MovieCardTabContent from "../../../blocks/movie-card-tabs/movie-card-tab-content/movie-card-tab-content";
 
