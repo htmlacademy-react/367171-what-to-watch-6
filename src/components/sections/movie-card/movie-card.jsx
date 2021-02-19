@@ -6,7 +6,7 @@ import MovieCardFull from "./movie-card-full/movie-card-full";
 import MovieCardShort from "./movie-card-short/movie-card-short";
 import MovieCardReview from "./movie-card-review/movie-card-review";
 
-const getMovieCard = ({type}, currentMovie) => {
+const getMovieCard = (type, currentMovie) => {
   switch (type) {
     case `full`:
       return <MovieCardFull {...currentMovie}/>;
@@ -22,9 +22,9 @@ const getMovieCard = ({type}, currentMovie) => {
 const MovieCard = ({type, currentMovie}) => getMovieCard(type, currentMovie);
 
 MovieCard.propTypes = {
+  type: PropTypes.string,
   ...MovieCardInfo.propTypes,
   ...MovieCardTabContent.propTypes,
-  type: PropTypes.string,
   posterImage: PropTypes.string,
   previewImage: PropTypes.string,
   backgroundImage: PropTypes.string,

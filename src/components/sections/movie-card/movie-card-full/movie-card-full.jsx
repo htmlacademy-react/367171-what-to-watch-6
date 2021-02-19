@@ -5,6 +5,8 @@ import MovieCardTabs from "../../../blocks/movie-card-tabs/movie-card-tabs";
 import MovieCardPoster from "../../../blocks/movie-card-poster/movie-card-poster";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card";
+import MovieCardTabContent from "../../../blocks/movie-card-tabs/movie-card-tab-content/movie-card-tab-content";
+import MovieCardShort from "../movie-card-short/movie-card-short";
 
 const MovieCardFull = ({name, posterImage, backgroundImage, description, rating, scoresCount, director, starring, genre, released}) => {
   return (
@@ -36,6 +38,18 @@ const MovieCardFull = ({name, posterImage, backgroundImage, description, rating,
   );
 };
 
-MovieCardFull.propTypes = {...PropTypes.instanceOf(MovieCard)};
+MovieCardFull.propTypes = {
+  ...MovieCardInfo.propTypes,
+  ...MovieCardTabContent.propTypes,
+  posterImage: PropTypes.string,
+  previewImage: PropTypes.string,
+  backgroundImage: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  runTime: PropTypes.number,
+  id: PropTypes.number,
+  isFavorite: PropTypes.bool,
+  videoLink: PropTypes.string,
+  previewVideoLink: PropTypes.string
+};
 
 export default MovieCardFull;

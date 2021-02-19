@@ -18,7 +18,7 @@ const AddReview = ({itemId}) => {
 
   return (
     <MainLayout>
-      <MovieCard itemId={itemId} type="review" {...currentMovie}/>
+      <MovieCard type="review" currentMovie={currentMovie}/>
     </MainLayout>
   );
 };

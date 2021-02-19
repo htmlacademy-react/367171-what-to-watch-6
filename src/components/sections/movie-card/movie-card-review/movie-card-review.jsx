@@ -4,10 +4,13 @@ import MovieCardPoster from "../../../blocks/movie-card-poster/movie-card-poster
 import MovieCard from "../movie-card";
 import AddReviewForm from "../../../blocks/add-review-form/add-review-form";
 import PropTypes from "prop-types";
+import MovieCardInfo from "../../../blocks/movie-card-info/movie-card-info";
+import MovieCardTabContent from "../../../blocks/movie-card-tabs/movie-card-tab-content/movie-card-tab-content";
+import MovieCardShort from "../movie-card-short/movie-card-short";
 
 const MovieCardReview = ({name, posterImage, backgroundImage}) => {
   return (
-    <section className="movie-card">
+    <section className="movie-card movie-card--full">
       <div className="movie-card__header">
         <div className="movie-card__bg">
           <img src={backgroundImage} alt={name}/>
@@ -27,6 +30,18 @@ const MovieCardReview = ({name, posterImage, backgroundImage}) => {
   );
 };
 
-MovieCardReview.propTypes = {...PropTypes.instanceOf(MovieCard)};
+MovieCardReview.propTypes = {
+  ...MovieCardInfo.propTypes,
+  ...MovieCardTabContent.propTypes,
+  posterImage: PropTypes.string,
+  previewImage: PropTypes.string,
+  backgroundImage: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  runTime: PropTypes.number,
+  id: PropTypes.number,
+  isFavorite: PropTypes.bool,
+  videoLink: PropTypes.string,
+  previewVideoLink: PropTypes.string
+};
 
 export default MovieCardReview;

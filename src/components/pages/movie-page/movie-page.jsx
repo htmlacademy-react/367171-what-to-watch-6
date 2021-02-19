@@ -20,7 +20,7 @@ const MoviePage = ({itemId}) => {
 
   return (
     <MainLayout>
-      <MovieCard type="full" {...currentMovie}/>
+      <MovieCard type="full" currentMovie={currentMovie}/>
       <InnerLayout className={`page-content`}>
         <Catalog className={`catalog--like-this`} movieItems={movieItems} title={`More like this`}/>
         <PageFooter/>
