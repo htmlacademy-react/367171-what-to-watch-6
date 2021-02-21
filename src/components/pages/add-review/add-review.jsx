@@ -1,30 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import MainLayout from "../../layouts/main-layout/main-layout";
 import MovieCard from "../../sections/movie-card/movie-card";
-import PropTypes from "prop-types";
 import {movieItems} from "../../../mocks/movie-items";
 
-const AddReview = ({itemId}) => {
+const [currentMovie] = movieItems.filter((item) => item.isActive);
+const {background, genre, releaseDate, poster, title} = currentMovie;
 
-  const movie = movieItems.find((item) => item.id === itemId);
-
-  const [currentMovie, setCurrentMovie] = useState(movie);
-
-  useEffect(()=> {
-    if (currentMovie.id !== itemId) {
-      setCurrentMovie(movie);
-    }
-  }, [itemId]);
-
+const AddReview = () => {
   return (
     <MainLayout>
-      <MovieCard type="review" currentMovie={currentMovie}/>
+      <MovieCard type="review" background={background} genre={genre} releaseDate={releaseDate} poster={poster} title={title}/>
     </MainLayout>
   );
-};
-
-AddReview.propTypes = {
-  itemId: PropTypes.number
 };
 
 export default AddReview;

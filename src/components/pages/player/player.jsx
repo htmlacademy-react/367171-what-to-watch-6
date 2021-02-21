@@ -1,23 +1,13 @@
 import React from "react";
 import MainLayout from "../../layouts/main-layout/main-layout";
-import {useParams} from "react-router";
-import {movieItems} from "../../../mocks/movie-items";
-import {RoutePath} from "../../constants/routes";
-import {useHistory} from "react-router-dom";
 
 const Player = () => {
-
-  const history = useHistory();
-  const {id} = useParams();
-  const movie = movieItems.find((item) => item.id === Number(id));
-  const {videoLink} = movie;
-
   return (
     <MainLayout>
       <div className="player">
-        <video src={videoLink} className="player__video" poster="img/player-poster.jpg" autoPlay></video>
+        <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
 
-        <button type="button" className="player__exit" onClick={()=> history.push(`${RoutePath.FILMS}${id}`)}>Exit</button>
+        <button type="button" className="player__exit">Exit</button>
 
         <div className="player__controls">
           <div className="player__controls-row">

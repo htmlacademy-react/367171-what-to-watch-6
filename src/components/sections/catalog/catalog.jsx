@@ -4,16 +4,15 @@ import MoviesList from "../../blocks/movies-list/movies-list";
 import PropTypes from "prop-types";
 import GenresList from "../../blocks/genres-list/genres-list";
 import classnames from "classnames";
-import MovieCard from "../movie-card/movie-card";
 
 const Catalog = ({movieItems, genresItems, filter = false, title = `Catalog`, className}) => {
   return (
     <section className={(classnames(`catalog`, className))}>
       <h2 className={classnames(`catalog-title`, {[`visually-hidden`]: title === `Catalog`})}>{title}</h2>
 
-      {filter ? <GenresList genresItems={genresItems}/> : null}
+      {filter ? <GenresList items={genresItems}/> : null}
 
-      <MoviesList movieItems={movieItems}/>
+      <MoviesList items={movieItems}/>
 
       <ButtonShowMore/>
 
@@ -22,12 +21,22 @@ const Catalog = ({movieItems, genresItems, filter = false, title = `Catalog`, cl
 };
 
 Catalog.propTypes = {
-  ...MovieCard.propTypes,
-  ...GenresList.propTypes,
-  ...MoviesList.propTypes,
   className: PropTypes.string,
   filter: PropTypes.bool,
-  title: PropTypes.string
+  title: PropTypes.string,
+  movieItems: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        img: PropTypes.string.isRequired
+      })
+  ).isRequired,
+  genresItems: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired
+      })
+  ),
 };
 
 export default Catalog;
