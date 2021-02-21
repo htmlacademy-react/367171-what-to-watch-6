@@ -1,16 +1,15 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import MovieCard from "../../sections/movie-card/movie-card";
 import InnerLayout from "../../layouts/inner-layout/inner-layout";
 import MainLayout from "../../layouts/main-layout/main-layout";
 import PageFooter from "../../sections/page-footer/page-footer";
 import Catalog from "../../sections/catalog/catalog";
 
-const MainPage = ({movieItems, currentMovie, genresItems}) => {
+const MainPage = ({movieItems, promoMovie, genresItems}) => {
+
   return (
     <MainLayout>
-      <MovieCard {...currentMovie}/>
-
+      <MovieCard type="short" currentMovie={promoMovie}/>
       <InnerLayout className={`page-content`}>
         <Catalog movieItems={movieItems} genresItems={genresItems} filter={true}/>
         <PageFooter/>
@@ -21,29 +20,8 @@ const MainPage = ({movieItems, currentMovie, genresItems}) => {
 };
 
 MainPage.propTypes = {
-  movieItems: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired
-      })
-  ).isRequired,
-  genresItems: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired
-      })
-  ).isRequired,
-  title: PropTypes.string,
-  img: PropTypes.string,
-  currentMovie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    background: PropTypes.string.isRequired,
-    isActive: PropTypes.boolean
-  })
+  ...Catalog.propTypes,
+  ...MovieCard.propTypes
 };
 
 export default MainPage;
