@@ -5,11 +5,11 @@ import InnerLayout from "../../layouts/inner-layout/inner-layout";
 import Catalog from "../../sections/catalog/catalog";
 import PageFooter from "../../sections/page-footer/page-footer";
 import {movieItems} from "../../../mocks/movie-items";
-import useFilm from "../../hooks/useFilm/useFilm";
+import useMovie from "../../hooks/use-movie/useMovie";
 
 const MoviePage = ({itemId}) => {
 
-  const currentMovie = useFilm(itemId);
+  const currentMovie = useMovie(itemId);
 
   return (
     <MainLayout>

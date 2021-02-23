@@ -2,11 +2,11 @@ import React from "react";
 import MainLayout from "../../layouts/main-layout/main-layout";
 import MovieCard from "../../sections/movie-card/movie-card";
 import PropTypes from "prop-types";
-import useFilm from "../../hooks/useFilm/useFilm";
+import useMovie from "../../hooks/use-movie/useMovie";
 
 const AddReview = ({itemId}) => {
 
-  const currentMovie = useFilm(itemId);
+  const currentMovie = useMovie(itemId);
 
   return (
     <MainLayout>
