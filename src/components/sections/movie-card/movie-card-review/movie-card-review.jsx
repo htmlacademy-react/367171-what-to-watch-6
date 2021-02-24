@@ -2,9 +2,7 @@ import React from "react";
 import PageHeader from "../../page-header/page-header";
 import MovieCardPoster from "../../../blocks/movie-card-poster/movie-card-poster";
 import AddReviewForm from "../../../blocks/add-review-form/add-review-form";
-import PropTypes from "prop-types";
-import MovieCardInfo from "../../../blocks/movie-card-info/movie-card-info";
-import MovieCardTabContent from "../../../blocks/movie-card-tabs/movie-card-tab-content/movie-card-tab-content";
+import movieCardPropTypes from "../move-card.prop";
 
 const MovieCardReview = ({name, posterImage, backgroundImage}) => {
   return (
@@ -28,18 +26,6 @@ const MovieCardReview = ({name, posterImage, backgroundImage}) => {
   );
 };
 
-MovieCardReview.propTypes = {
-  ...MovieCardInfo.propTypes,
-  ...MovieCardTabContent.propTypes,
-  posterImage: PropTypes.string,
-  previewImage: PropTypes.string,
-  backgroundImage: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  runTime: PropTypes.number,
-  id: PropTypes.number,
-  isFavorite: PropTypes.bool,
-  videoLink: PropTypes.string,
-  previewVideoLink: PropTypes.string
-};
+MovieCardReview.propTypes =  {...movieCardPropTypes};
 
 export default MovieCardReview;

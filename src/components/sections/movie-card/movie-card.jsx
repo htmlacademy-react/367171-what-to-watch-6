@@ -5,6 +5,7 @@ import MovieCardTabContent from "../../blocks/movie-card-tabs/movie-card-tab-con
 import MovieCardFull from "./movie-card-full/movie-card-full";
 import MovieCardShort from "./movie-card-short/movie-card-short";
 import MovieCardReview from "./movie-card-review/movie-card-review";
+import movieCardPropTypes from "./move-card.prop";
 
 const getMovieCard = (type, currentMovie) => {
   switch (type) {
@@ -21,19 +22,6 @@ const getMovieCard = (type, currentMovie) => {
 
 const MovieCard = ({type, currentMovie}) => getMovieCard(type, currentMovie);
 
-MovieCard.propTypes = {
-  type: PropTypes.string,
-  ...MovieCardInfo.propTypes,
-  ...MovieCardTabContent.propTypes,
-  posterImage: PropTypes.string,
-  previewImage: PropTypes.string,
-  backgroundImage: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  runTime: PropTypes.number,
-  id: PropTypes.number,
-  isFavorite: PropTypes.bool,
-  videoLink: PropTypes.string,
-  previewVideoLink: PropTypes.string
-};
+MovieCard.propTypes = {...movieCardPropTypes, type: PropTypes.string};
 
 export default MovieCard;

@@ -2,8 +2,7 @@ import React from "react";
 import PageHeader from "../../page-header/page-header";
 import MovieCardInfo from "../../../blocks/movie-card-info/movie-card-info";
 import MovieCardPoster from "../../../blocks/movie-card-poster/movie-card-poster";
-import PropTypes from "prop-types";
-import MovieCardTabContent from "../../../blocks/movie-card-tabs/movie-card-tab-content/movie-card-tab-content";
+import movieCardPropTypes from "../move-card.prop";
 
 const MovieCardShort = ({name, posterImage, backgroundImage, genre, released}) => {
   return (
@@ -26,18 +25,6 @@ const MovieCardShort = ({name, posterImage, backgroundImage, genre, released}) =
   );
 };
 
-MovieCardShort.propTypes = {
-  ...MovieCardInfo.propTypes,
-  ...MovieCardTabContent.propTypes,
-  posterImage: PropTypes.string,
-  previewImage: PropTypes.string,
-  backgroundImage: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  runTime: PropTypes.number,
-  id: PropTypes.number,
-  isFavorite: PropTypes.bool,
-  videoLink: PropTypes.string,
-  previewVideoLink: PropTypes.string
-};
+MovieCardShort.propTypes = {...movieCardPropTypes};
 
 export default MovieCardShort;
