@@ -1,20 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import MainLayout from "../../layouts/main-layout/main-layout";
 import VideoPlayer from "../../sections/video-player/video-player";
-import {useHistory, useParams} from "react-router-dom";
-import {movieItems} from "../../../mocks/movie-items";
+import {useHistory} from "react-router-dom";
 import {RoutePath} from "../../constants/routes";
+import useMovie from "../../hooks/use-movie/useMovie";
 
 const Player = () => {
-
   const history = useHistory();
-  const {id} = useParams();
-  const movie = movieItems.find((item) => item.id === Number(id));
-  const {videoLink} = movie;
+  const currentMovie = useMovie();
+  const {videoLink, id} = currentMovie;
+  const [isPlaying, setIsPlaying] = useState(true);
 
   return (
     <MainLayout>
-      <VideoPlayer src={videoLink} onButtonExitClick={()=> history.push(`${RoutePath.FILMS}${id}`)}/>
+      <VideoPlayer
+        src={videoLink}
+        isPlaying={isPlaying}
+        onPlayButtonClick={() => setIsPlaying(!isPlaying)}
+        onButtonExitClick={()=> history.push(`${RoutePath.FILMS}${id}`)}/>
     </MainLayout>
   );
 };

@@ -1,11 +1,48 @@
-import React from "react";
+import React, {useRef, useEffect, useState} from "react";
 import PropTypes from "prop-types";
 
-const VideoPlayer = ({defaultIsMuted = false, defaultIsPlaying = false, src, onButtonExitClick}) => {
+const VideoPlayer = ({isMuted = false, isPlaying, src, onButtonExitClick, onPlayButtonClick}) => {
+
+  const iconControl = isPlaying ? `#pause` : `#play-s`;
+  const [isLoading, setIsLoading] = useState(true);
+  const videoRef = useRef();
+
+  useEffect(() => {
+    videoRef.current.oncanplaythrough = () => setIsLoading(false);
+
+    return () => {
+      videoRef.current.oncanplaythrough = null;
+      videoRef.current.onplay = null;
+      videoRef.current.onpause = null;
+      videoRef.current = null;
+    };
+  }, [src]);
+
+  useEffect(() => {
+    if (videoRef.current && isPlaying && !isMuted) {
+      videoRef.current.play();
+      return;
+    }
+    if (videoRef.current && isPlaying && isMuted) {
+      setTimeout(()=> {
+        videoRef.current.play();
+        return;
+      }, 1000);
+    }
+
+    videoRef.current.pause();
+  }, [videoRef, isPlaying, isMuted]);
+
 
   return (
     <div className="player">
-      <video src={src} className="player__video" poster="img/player-poster.jpg" autoPlay={defaultIsPlaying} muted={defaultIsMuted}></video>
+      <video
+        ref={videoRef}
+        src={src}
+        className="player__video"
+        poster="img/player-poster.jpg"
+        autoPlay={isPlaying}
+        muted={isMuted}></video>
 
       <button type="button" className="player__exit" onClick={onButtonExitClick}>Exit</button>
 
@@ -19,9 +56,14 @@ const VideoPlayer = ({defaultIsMuted = false, defaultIsPlaying = false, src, onB
         </div>
 
         <div className="player__controls-row">
-          <button type="button" className="player__play">
+          <button
+            type="button"
+            className="player__play"
+            disabled={isLoading}
+            onClick={onPlayButtonClick}>
+
             <svg viewBox="0 0 19 19" width="19" height="19">
-              <use xlinkHref="#play-s"></use>
+              <use xlinkHref={iconControl}></use>
             </svg>
             <span>Play</span>
           </button>
@@ -41,9 +83,10 @@ const VideoPlayer = ({defaultIsMuted = false, defaultIsPlaying = false, src, onB
 
 VideoPlayer.propTypes = {
   src: PropTypes.string,
-  defaultIsMuted: PropTypes.bool,
-  defaultIsPlaying: PropTypes.bool,
-  onButtonExitClick: PropTypes.func
+  isMuted: PropTypes.bool,
+  isPlaying: PropTypes.bool,
+  onButtonExitClick: PropTypes.func,
+  onPlayButtonClick: PropTypes.func
 };
 
 export default VideoPlayer;
