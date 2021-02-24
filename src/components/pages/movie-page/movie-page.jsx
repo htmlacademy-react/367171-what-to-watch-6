@@ -7,9 +7,9 @@ import PageFooter from "../../sections/page-footer/page-footer";
 import {movieItems} from "../../../mocks/movie-items";
 import useMovie from "../../hooks/use-movie/useMovie";
 
-const MoviePage = ({itemId}) => {
+const MoviePage = () => {
 
-  const currentMovie = useMovie(itemId);
+  const currentMovie = useMovie();
 
   return (
     <MainLayout>

@@ -5,7 +5,7 @@ import Link from "../../link/link";
 
 const MovieCardPreview = ({id, name, previewImage}) => {
   return (
-    <article className="small-movie-card catalog__movies-card">
+    <article className="small-movie-card catalog__movies-card" onMouseOver={()=> console.log(id)}>
       <div className="small-movie-card__image">
         <img src={previewImage} alt={name} width="280" height="175"/>
       </div>

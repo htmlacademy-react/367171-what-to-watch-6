@@ -1,19 +1,13 @@
 import React from "react";
-import {RoutePath} from "../../constants/routes";
-import {useHistory, useParams} from "react-router-dom";
-import {movieItems} from "../../../mocks/movie-items";
+import PropTypes from "prop-types";
 
-const Player = () => {
-  const history = useHistory();
-  const {id} = useParams();
-  const movie = movieItems.find((item) => item.id === Number(id));
-  const {videoLink} = movie;
+const VideoPlayer = ({defaultIsMuted = false, defaultIsPlaying = false, src, onButtonExitClick}) => {
 
   return (
     <div className="player">
-      <video src={videoLink} className="player__video" poster="img/player-poster.jpg" autoPlay></video>
+      <video src={src} className="player__video" poster="img/player-poster.jpg" autoPlay={defaultIsPlaying} muted={defaultIsMuted}></video>
 
-      <button type="button" className="player__exit" onClick={()=> history.push(`${RoutePath.FILMS}${id}`)}>Exit</button>
+      <button type="button" className="player__exit" onClick={onButtonExitClick}>Exit</button>
 
       <div className="player__controls">
         <div className="player__controls-row">
@@ -45,4 +39,11 @@ const Player = () => {
   );
 };
 
-export default Player;
+VideoPlayer.propTypes = {
+  src: PropTypes.string,
+  defaultIsMuted: PropTypes.bool,
+  defaultIsPlaying: PropTypes.bool,
+  onButtonExitClick: PropTypes.func
+};
+
+export default VideoPlayer;

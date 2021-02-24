@@ -4,9 +4,9 @@ import MovieCard from "../../sections/movie-card/movie-card";
 import PropTypes from "prop-types";
 import useMovie from "../../hooks/use-movie/useMovie";
 
-const AddReview = ({itemId}) => {
+const AddReview = () => {
 
-  const currentMovie = useMovie(itemId);
+  const currentMovie = useMovie();
 
   return (
     <MainLayout>
