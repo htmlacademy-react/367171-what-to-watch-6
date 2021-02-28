@@ -13,7 +13,8 @@ const ActiveVideoPlayer = ({videoLink, id, name, previewImage}) => {
 
   const onMouseUp = () => setHovering(false);
 
-  const onMouseDown = ()=> {
+  const onMouseDown = (evt)=> {
+    evt.preventDefault();
     if (Number(previewRef.current.id) === id) {
       setHovering(true);
     }

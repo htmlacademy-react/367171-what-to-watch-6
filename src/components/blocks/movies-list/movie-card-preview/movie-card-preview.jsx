@@ -5,8 +5,8 @@ import Link from "../../link/link";
 
 // eslint-disable-next-line react/display-name
 const MovieCardPreview = forwardRef(({id, name, previewImage, onMouseDown}, ref) => (
-  <article ref={ref} id={id} className="small-movie-card catalog__movies-card" onMouseDown={onMouseDown}>
-    <div className="small-movie-card__image">
+  <article ref={ref} id={id} className="small-movie-card catalog__movies-card" >
+    <div className="small-movie-card__image" onMouseDown={onMouseDown}>
       <img src={previewImage} alt={name} width="280" height="175"/>
     </div>
     <h3 className="small-movie-card__title">
