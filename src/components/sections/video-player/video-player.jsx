@@ -1,8 +1,7 @@
 import React, {useRef, useEffect, useState} from "react";
 import PropTypes from "prop-types";
 
-const VideoPlayer = ({isMuted = false, isPlaying, src, onButtonExitClick, onPlayButtonClick}) => {
-
+const VideoPlayer = ({id, isMuted = false, isPlaying = true, src, onButtonExitClick, onPlayButtonClick, onFullScreenButtonClick, onMouseUp}) => {
   const iconControl = isPlaying ? `#pause` : `#play-s`;
   const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef();
@@ -23,6 +22,7 @@ const VideoPlayer = ({isMuted = false, isPlaying, src, onButtonExitClick, onPlay
       videoRef.current.play();
       return;
     }
+
     if (videoRef.current && isPlaying && isMuted) {
       setTimeout(()=> {
         videoRef.current.play();
@@ -33,18 +33,19 @@ const VideoPlayer = ({isMuted = false, isPlaying, src, onButtonExitClick, onPlay
     videoRef.current.pause();
   }, [videoRef, isPlaying, isMuted]);
 
+  const style = (isPlaying && isMuted) ? {position: `relative`, width: `280px`, height: `175px`} : null;
 
   return (
-    <div className="player">
+    <div className="player" style={style} onMouseUp={onMouseUp}>
       <video
+        id={id}
         ref={videoRef}
         src={src}
         className="player__video"
         poster="img/player-poster.jpg"
-        autoPlay={isPlaying}
         muted={isMuted}></video>
 
-      <button type="button" className="player__exit" onClick={onButtonExitClick}>Exit</button>
+      {isPlaying && !isMuted && (<button type="button" className="player__exit" onClick={onButtonExitClick}>Exit</button>)}
 
       <div className="player__controls">
         <div className="player__controls-row">
@@ -69,7 +70,7 @@ const VideoPlayer = ({isMuted = false, isPlaying, src, onButtonExitClick, onPlay
           </button>
           <div className="player__name">Transpotting</div>
 
-          <button type="button" className="player__full-screen">
+          <button type="button" className="player__full-screen" onClick={onFullScreenButtonClick}>
             <svg viewBox="0 0 27 27" width="27" height="27">
               <use xlinkHref="#full-screen"></use>
             </svg>
@@ -82,11 +83,14 @@ const VideoPlayer = ({isMuted = false, isPlaying, src, onButtonExitClick, onPlay
 };
 
 VideoPlayer.propTypes = {
+  id: PropTypes.number,
   src: PropTypes.string,
   isMuted: PropTypes.bool,
   isPlaying: PropTypes.bool,
   onButtonExitClick: PropTypes.func,
-  onPlayButtonClick: PropTypes.func
+  onPlayButtonClick: PropTypes.func,
+  onFullScreenButtonClick: PropTypes.func,
+  onMouseUp: PropTypes.func
 };
 
 export default VideoPlayer;

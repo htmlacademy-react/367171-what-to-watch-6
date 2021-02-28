@@ -26,6 +26,6 @@ const MovieCardReview = ({name, posterImage, backgroundImage}) => {
   );
 };
 
-MovieCardReview.propTypes =  {...movieCardPropTypes};
+MovieCardReview.propTypes = {...movieCardPropTypes};
 
 export default MovieCardReview;
