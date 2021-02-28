@@ -33,7 +33,7 @@ const VideoPlayer = ({id, isMuted = false, isPlaying = true, src, onButtonExitCl
     videoRef.current.pause();
   }, [videoRef, isPlaying, isMuted]);
 
-  const style = (isPlaying && isMuted) ? {position: `relative`, width: `280px`, height: `175px`} : null;
+  const style = (isPlaying && isMuted) ? {position: `relative`, width: `280px`, height: `175px`, marginRight: `10px`} : null;
 
   return (
     <div className="player" style={style} onMouseUp={onMouseUp}>
