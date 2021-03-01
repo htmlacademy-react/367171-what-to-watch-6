@@ -3,8 +3,7 @@ import PageHeader from "../../page-header/page-header";
 import MovieCardInfo from "../../../blocks/movie-card-info/movie-card-info";
 import MovieCardTabs from "../../../blocks/movie-card-tabs/movie-card-tabs";
 import MovieCardPoster from "../../../blocks/movie-card-poster/movie-card-poster";
-import PropTypes from "prop-types";
-import MovieCardTabContent from "../../../blocks/movie-card-tabs/movie-card-tab-content/movie-card-tab-content";
+import movieCardPropTypes from "../move-card.prop";
 
 const MovieCardFull = ({name, posterImage, backgroundImage, description, rating, scoresCount, director, starring, genre, released}) => {
   return (
@@ -36,18 +35,6 @@ const MovieCardFull = ({name, posterImage, backgroundImage, description, rating,
   );
 };
 
-MovieCardFull.propTypes = {
-  ...MovieCardInfo.propTypes,
-  ...MovieCardTabContent.propTypes,
-  posterImage: PropTypes.string,
-  previewImage: PropTypes.string,
-  backgroundImage: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  runTime: PropTypes.number,
-  id: PropTypes.number,
-  isFavorite: PropTypes.bool,
-  videoLink: PropTypes.string,
-  previewVideoLink: PropTypes.string
-};
+MovieCardFull.propTypes = {...movieCardPropTypes};
 
 export default MovieCardFull;
