@@ -8,6 +8,7 @@ import MoviePage from "../pages/movie-page/movie-page";
 import AddReview from "../pages/add-review/add-review";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {RoutePath} from "../constants/routes";
+import TabsPage from "../pages/tabs/tabs-page";
 
 const App = ({movieItems, genresItems, promoMovie}) => {
   return (
@@ -30,6 +31,7 @@ const App = ({movieItems, genresItems, promoMovie}) => {
             const {id} = match.params;
             return <AddReview itemId={Number(id)} />;
           }}/>
+        <Route path="/tabs" component={TabsPage}/>
         <Route component={NotFound}/>
       </Switch>
     </Router>
