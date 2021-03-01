@@ -11,9 +11,9 @@ const ActiveVideoPlayer = ({videoLink, id, name, previewImage}) => {
   const [isHovering, setHovering] = useState(false);
   const previewRef = useRef();
 
-  const onMouseUp = () => setHovering(false);
+  const onMouseLeave = () => setHovering(false);
 
-  const onMouseDown = (evt)=> {
+  const onMouseEnter = (evt)=> {
     evt.preventDefault();
     if (Number(previewRef.current.id) === id) {
       setHovering(true);
@@ -24,14 +24,14 @@ const ActiveVideoPlayer = ({videoLink, id, name, previewImage}) => {
     <>
       {isHovering ?
         <VideoPlayer
-          onMouseUp={onMouseUp}
+          onMouseLeave={onMouseLeave}
           id={id}
           src={videoLink}
           isMuted={true}
           isPlaying={Number(previewRef.current.id) === id ? true : false}
           onFullScreenButtonClick={()=> history.push(`${RoutePath.PLAYER}${id}`)}/> :
         <MovieCardPreview
-          onMouseDown={onMouseDown}
+          onMouseEnter={onMouseEnter}
           ref={previewRef}
           id={id}
           key={id}

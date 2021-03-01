@@ -1,7 +1,7 @@
 import React, {useRef, useEffect, useState} from "react";
 import PropTypes from "prop-types";
 
-const VideoPlayer = ({id, isMuted = false, isPlaying = true, src, onButtonExitClick, onPlayButtonClick, onFullScreenButtonClick, onMouseUp}) => {
+const VideoPlayer = ({id, isMuted = false, isPlaying = true, src, onButtonExitClick, onPlayButtonClick, onFullScreenButtonClick, onMouseLeave}) => {
   const iconControl = isPlaying ? `#pause` : `#play-s`;
   const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef();
@@ -36,7 +36,7 @@ const VideoPlayer = ({id, isMuted = false, isPlaying = true, src, onButtonExitCl
   const style = (isPlaying && isMuted) ? {position: `relative`, width: `280px`, height: `175px`, marginRight: `10px`} : null;
 
   return (
-    <div className="player" style={style} onMouseUp={onMouseUp}>
+    <div className="player" style={style} onMouseLeave={onMouseLeave}>
       <video
         id={id}
         ref={videoRef}
@@ -90,7 +90,7 @@ VideoPlayer.propTypes = {
   onButtonExitClick: PropTypes.func,
   onPlayButtonClick: PropTypes.func,
   onFullScreenButtonClick: PropTypes.func,
-  onMouseUp: PropTypes.func
+  onMouseLeave: PropTypes.func
 };
 
 export default VideoPlayer;
