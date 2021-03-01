@@ -1,22 +1,15 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import MainLayout from "../../layouts/main-layout/main-layout";
 import MovieCard from "../../sections/movie-card/movie-card";
 import InnerLayout from "../../layouts/inner-layout/inner-layout";
 import Catalog from "../../sections/catalog/catalog";
 import PageFooter from "../../sections/page-footer/page-footer";
 import {movieItems} from "../../../mocks/movie-items";
+import useMovie from "../../hooks/use-movie/useMovie";
 
-const MoviePage = ({itemId}) => {
+const MoviePage = () => {
 
-  const movie = movieItems.find((item) => item.id === itemId);
-
-  const [currentMovie, setCurrentMovie] = useState(movie);
-
-  useEffect(()=> {
-    if (currentMovie.id !== itemId) {
-      setCurrentMovie(movie);
-    }
-  }, [itemId]);
+  const currentMovie = useMovie();
 
   return (
     <MainLayout>

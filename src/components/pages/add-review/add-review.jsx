@@ -1,20 +1,12 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import MainLayout from "../../layouts/main-layout/main-layout";
 import MovieCard from "../../sections/movie-card/movie-card";
 import PropTypes from "prop-types";
-import {movieItems} from "../../../mocks/movie-items";
+import useMovie from "../../hooks/use-movie/useMovie";
 
-const AddReview = ({itemId}) => {
+const AddReview = () => {
 
-  const movie = movieItems.find((item) => item.id === itemId);
-
-  const [currentMovie, setCurrentMovie] = useState(movie);
-
-  useEffect(()=> {
-    if (currentMovie.id !== itemId) {
-      setCurrentMovie(movie);
-    }
-  }, [itemId]);
+  const currentMovie = useMovie();
 
   return (
     <MainLayout>

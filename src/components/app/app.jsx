@@ -20,18 +20,9 @@ const App = ({movieItems, genresItems, promoMovie}) => {
         <Route path={RoutePath.LOGIN} exact component={SignIn}/>
         <Route path={RoutePath.MY_LIST} exact component={MyList}/>
         <Route path={RoutePath.PLAYER_ID} component={Player}/>
-        <Route path={RoutePath.FILM_ID} exact
-          render={
-            ({match}) => {
-              const {id} = match.params;
-              return <MoviePage itemId={Number(id)} />;
-            }}/>
-        <Route path={RoutePath.FILM_REVIEW} render={
-          ({match}) => {
-            const {id} = match.params;
-            return <AddReview itemId={Number(id)} />;
-          }}/>
-        <Route path="/tabs" component={TabsPage}/>
+        <Route path={RoutePath.FILM_ID} exact component={MoviePage}/>
+        <Route path={RoutePath.FILM_REVIEW} component={AddReview}/>
+ <Route path="/tabs" component={TabsPage}/>
         <Route component={NotFound}/>
       </Switch>
     </Router>
