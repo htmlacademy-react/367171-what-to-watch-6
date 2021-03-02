@@ -19,10 +19,10 @@ const App = ({movieItems, genresItems, promoMovie}) => {
         }/>
         <Route path={RoutePath.LOGIN} exact component={SignIn}/>
         <Route path={RoutePath.MY_LIST} exact component={MyList}/>
+        {/*FIXME: провалидировать несуществующией страницы из-за отсутствия id*/}
         <Route path={RoutePath.PLAYER_ID} component={Player}/>
         <Route path={RoutePath.FILM_ID} exact component={MoviePage}/>
         <Route path={RoutePath.FILM_REVIEW} component={AddReview}/>
- <Route path="/tabs" component={TabsPage}/>
         <Route component={NotFound}/>
       </Switch>
     </Router>
