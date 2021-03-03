@@ -1,3 +1,4 @@
+import moment from "moment";
 import {COUNT_COL, ONE_HOUR} from "../constants/tabs";
 
 export const getMovieRatingText = (rating) => {
@@ -36,3 +37,9 @@ export const getTwoArraysFromOne = (array) => {
 
   return [arrayLeft, arrayRight];
 };
+
+export const getStringRatingMovie = (rating) => rating.toString().replace(/\./g, `,`);
+
+export const getCommentDate = (date) => moment(date).format(`MMMM DD, YYYY`);
+
+export const getCommentDateTime = (date) => moment(date).format(`YYYY-MM-DD`);
