@@ -1,5 +1,5 @@
 import moment from "moment";
-import {COUNT_COL, ONE_HOUR} from "../constants/tabs";
+import {COUNT_COL, ONE_HOUR} from "../constants/common";
 
 export const getMovieRatingText = (rating) => {
   switch (true) {

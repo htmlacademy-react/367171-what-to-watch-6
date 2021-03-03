@@ -1,7 +1,9 @@
 import React from "react";
 import {getCommentDate, getCommentDateTime, getStringRatingMovie} from "../../utils/utils";
+import PropTypes from "prop-types";
 
 const Review = ({user, comment, date, rating}) => {
+
   const {name} = user;
 
   return (
@@ -17,6 +19,16 @@ const Review = ({user, comment, date, rating}) => {
       <div className="review__rating">{getStringRatingMovie(rating)}</div>
     </div>
   );
+};
+
+Review.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string
+  }),
+  comment: PropTypes.string,
+  date: PropTypes.number,
+  rating: PropTypes.number
 };
 
 export default Review;

@@ -8,6 +8,4 @@ export const TabsItems = [
   {id: 3, name: `Reviews`, component: MovieCardTabReviews}
 ];
 
-export const ONE_HOUR = 60;
 
-export const COUNT_COL = 2;
