@@ -5,17 +5,19 @@ import InnerLayout from "../../layouts/inner-layout/inner-layout";
 import Catalog from "../../sections/catalog/catalog";
 import PageFooter from "../../sections/page-footer/page-footer";
 import {movieItems} from "../../../mocks/movie-items";
-import useMovie from "../../hooks/use-movie/useMovie";
+import useMovie from "../../hooks/use-movie";
 
 const MoviePage = () => {
 
   const currentMovie = useMovie();
 
+  const currentMovieGenre = currentMovie.genre;
+
   return (
     <MainLayout>
       <MovieCard type="full" currentMovie={currentMovie}/>
       <InnerLayout className={`page-content`}>
-        <Catalog className={`catalog--like-this`} movieItems={movieItems} title={`More like this`}/>
+        <Catalog currentMovieGenre={currentMovieGenre} className={`catalog--like-this`} movieItems={movieItems} title={`More like this`}/>
         <PageFooter/>
       </InnerLayout>
     </MainLayout>

@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {movieItems} from "../../../mocks/movie-items";
+import {movieItems} from "../../mocks/movie-items";
 import {useParams} from "react-router-dom";
 
 const useMovie = () => {

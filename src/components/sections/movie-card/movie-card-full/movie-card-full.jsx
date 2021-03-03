@@ -5,7 +5,10 @@ import MovieCardTabs from "../../../blocks/movie-card-tabs/movie-card-tabs";
 import MovieCardPoster from "../../../blocks/movie-card-poster/movie-card-poster";
 import movieCardPropTypes from "../move-card.prop";
 
-const MovieCardFull = ({name, posterImage, backgroundImage, description, rating, scoresCount, director, starring, genre, released}) => {
+const MovieCardFull = (currentMovie) => {
+
+  const {name, posterImage, backgroundImage, genre, released} = currentMovie;
+
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
@@ -27,7 +30,7 @@ const MovieCardFull = ({name, posterImage, backgroundImage, description, rating,
         <div className="movie-card__info">
           <MovieCardPoster size="big" name={name} posterImage={posterImage}/>
 
-          <MovieCardTabs description={description} director={director} starring={starring} scoresCount={scoresCount} rating={rating}/>
+          <MovieCardTabs {...currentMovie}/>
         </div>
       </div>
 

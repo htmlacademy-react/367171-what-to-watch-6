@@ -1,4 +1,4 @@
-const promoMovie = {
+export const promoMovie = {
   name: `Orlando`,
   posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
   previewImage: `img/orlando.jpg`,

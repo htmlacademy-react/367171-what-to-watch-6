@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import MainLayout from "../../layouts/main-layout/main-layout";
 import VideoPlayer from "../../sections/video-player/video-player";
 import {useHistory} from "react-router-dom";
-import useMovie from "../../hooks/use-movie/useMovie";
+import useMovie from "../../hooks/use-movie";
 
 const Player = () => {
   const history = useHistory();
