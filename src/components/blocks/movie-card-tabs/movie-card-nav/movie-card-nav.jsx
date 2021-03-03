@@ -11,10 +11,10 @@ const MovieCardNavItem = ({activeKey, id, title, onClick}) => {
 };
 
 MovieCardNavItem.propTypes = {
-  activeKey: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  activeKey: PropTypes.number,
+  id: PropTypes.number,
+  title: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 export const MovieCardNav = ({items, activeKey, defaultActiveKey = 1, onClick})=> {
@@ -33,7 +33,7 @@ export const MovieCardNav = ({items, activeKey, defaultActiveKey = 1, onClick})=
 MovieCardNav.propTypes = {
   activeKey: PropTypes.number.isRequired,
   defaultActiveKey: PropTypes.number,
-  items: PropTypes.arrayOf(PropTypes.shape({...MovieCardNavItem})).isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape({...MovieCardNavItem.propTypes})).isRequired,
   onClick: PropTypes.func.isRequired
 };
 
