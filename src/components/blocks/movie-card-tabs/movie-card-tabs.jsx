@@ -17,7 +17,7 @@ const MovieCardTabs = ({activeKey, defaultActiveKey = 1, ...currentMovie}) => {
       <MovieCardNav items={TabsItems} activeKey={isActiveKey} onClick={onClick}/>
 
       {TabsItems.map(({id, name, component})=> (
-        <MovieCardTabContent key={name} tabKey={id} activeKey={isActiveKey} component={component} {...currentMovie}/>
+        <MovieCardTabContent key={name} tabKey={id} activeKey={isActiveKey} Component={component} {...currentMovie}/>
       ))}
     </div>
   );

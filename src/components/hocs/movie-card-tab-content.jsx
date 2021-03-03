@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const MovieCardTabContent = ({component, tabKey, activeKey, ...props}) => {
+const MovieCardTabContent = ({Component, tabKey, activeKey, ...props}) => {
 
-  const Component = component;
   const style = activeKey !== tabKey ? {display: `none`} : null;
 
   const getTabContainer = () => {
