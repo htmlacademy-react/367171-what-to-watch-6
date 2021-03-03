@@ -12,7 +12,6 @@ const MovieCardTabs = ({activeKey, defaultActiveKey = 1, ...currentMovie}) => {
     setActiveKey(Number(evt.target.id));
   };
 
-
   return (
     <div className="movie-card__desc">
       <MovieCardNav items={TabsItems} activeKey={isActiveKey} onClick={onClick}/>

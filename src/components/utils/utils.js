@@ -1,4 +1,4 @@
-import {ONE_HOUR} from "../constants/tabs";
+import {COUNT_COL, ONE_HOUR} from "../constants/tabs";
 
 export const getMovieRatingText = (rating) => {
   switch (true) {
@@ -26,4 +26,13 @@ export const getRuntimeInHours = (runtime) => {
 
 export const getStringFromArray = (array, sign) => {
   return array.join(`${sign} `);
+};
+
+export const getTwoArraysFromOne = (array) => {
+  const lengthLeftCol = Math.round(array.length / COUNT_COL);
+
+  const arrayLeft = array.slice(0, lengthLeftCol);
+  const arrayRight = array.slice(lengthLeftCol, array.length);
+
+  return [arrayLeft, arrayRight];
 };
