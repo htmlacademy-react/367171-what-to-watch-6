@@ -1,4 +1,4 @@
-const genresItems = [
+export const genresItems = [
   {name: `all-genres`, label: `All genres`, selectedItem: true},
   {name: `comedies`, label: `Comedies`},
   {name: `crime`, label: `Crime`},
@@ -10,5 +10,3 @@ const genresItems = [
   {name: `sci-fi`, label: `Sci-Fi`},
   {name: `thrillers`, label: `Thrillers`}
 ];
-
-export {genresItems};

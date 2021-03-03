@@ -1,4 +1,4 @@
-const movieItems = [
+export const movieItems = [
   {
     name: `Orlando`,
     posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
@@ -151,5 +151,3 @@ const movieItems = [
     videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
     previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`}
 ];
-
-export {movieItems};
