@@ -32,7 +32,8 @@ Catalog.propTypes = {
   ...MoviesList.propTypes,
   className: PropTypes.string,
   filter: PropTypes.bool,
-  title: PropTypes.string
+  title: PropTypes.string,
+  currentMovieGenre: PropTypes.string
 };
 
 export default Catalog;
