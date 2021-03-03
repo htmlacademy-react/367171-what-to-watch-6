@@ -8,7 +8,6 @@ import MoviePage from "../pages/movie-page/movie-page";
 import AddReview from "../pages/add-review/add-review";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {RoutePath} from "../constants/routes";
-import TabsPage from "../pages/tabs/tabs-page";
 
 const App = ({movieItems, genresItems, promoMovie}) => {
   return (
@@ -19,7 +18,7 @@ const App = ({movieItems, genresItems, promoMovie}) => {
         }/>
         <Route path={RoutePath.LOGIN} exact component={SignIn}/>
         <Route path={RoutePath.MY_LIST} exact component={MyList}/>
-        {/*FIXME: провалидировать несуществующией страницы из-за отсутствия id*/}
+        {/* FIXME: провалидировать несуществующией страницы из-за отсутствия id*/}
         <Route path={RoutePath.PLAYER_ID} component={Player}/>
         <Route path={RoutePath.FILM_ID} exact component={MoviePage}/>
         <Route path={RoutePath.FILM_REVIEW} component={AddReview}/>

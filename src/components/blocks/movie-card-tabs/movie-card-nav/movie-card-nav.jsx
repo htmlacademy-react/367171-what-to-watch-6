@@ -1,5 +1,6 @@
 import React from "react";
 import classnames from "classnames";
+import PropTypes from "prop-types";
 
 const MovieCardNavItem = ({activeKey, id, title, onClick}) => {
   return (
@@ -7,6 +8,13 @@ const MovieCardNavItem = ({activeKey, id, title, onClick}) => {
       <a id={id} href="#" className="movie-nav__link" onClick={onClick}>{title}</a>
     </li>
   );
+};
+
+MovieCardNavItem.propTypes = {
+  activeKey: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export const MovieCardNav = ({items, activeKey, defaultActiveKey = 1, onClick})=> {
@@ -20,6 +28,13 @@ export const MovieCardNav = ({items, activeKey, defaultActiveKey = 1, onClick})=
       </ul>
     </nav>
   );
+};
+
+MovieCardNav.propTypes = {
+  activeKey: PropTypes.number.isRequired,
+  defaultActiveKey: PropTypes.number,
+  items: PropTypes.arrayOf(PropTypes.shape({...MovieCardNavItem})).isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default MovieCardNav;

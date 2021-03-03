@@ -7,7 +7,7 @@ import movieCardPropTypes from "../move-card.prop";
 
 const MovieCardFull = (currentMovie) => {
 
-  const {name, posterImage, backgroundImage, description, rating, scoresCount, director, starring, genre, released} = currentMovie;
+  const {name, posterImage, backgroundImage, genre, released} = currentMovie;
 
   return (
     <section className="movie-card movie-card--full">

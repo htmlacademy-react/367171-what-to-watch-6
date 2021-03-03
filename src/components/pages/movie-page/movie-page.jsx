@@ -5,7 +5,7 @@ import InnerLayout from "../../layouts/inner-layout/inner-layout";
 import Catalog from "../../sections/catalog/catalog";
 import PageFooter from "../../sections/page-footer/page-footer";
 import {movieItems} from "../../../mocks/movie-items";
-import useMovie from "../../hooks/use-movie/useMovie";
+import useMovie from "../../hooks/use-movie";
 
 const MoviePage = () => {
 

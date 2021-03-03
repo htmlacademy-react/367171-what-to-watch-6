@@ -1,22 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-const getMovieRatingText = (rating) => {
-  switch (true) {
-    case rating <= 3:
-      return `Bad`;
-    case (rating > 3 && rating <= 5):
-      return `Normal`;
-    case (rating > 5 && rating <= 8):
-      return `Good`;
-    case (rating > 8 && rating < 10):
-      return `Very good`;
-    case (rating === 10):
-      return `Awesome`;
-    default:
-      return `Empty data`;
-  }
-};
+import {getMovieRatingText} from "../../utils/utils";
 
 const MovieCardRating = ({rating, scoresCount}) => {
 
