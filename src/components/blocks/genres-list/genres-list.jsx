@@ -2,13 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-const GenresList = ({genresItems}) => {
+const GenresList = ({genresItems, activeKey, onClick}) => {
+
   return (
-    <ul className="catalog__genres-list">
-      {genresItems.map(({name, label, selectedItem}) => {
+    <ul className="catalog__genres-list" onClick={onClick}>
+      {genresItems.map((item, index) => {
         return (
-          <li key={name} className={classnames(`catalog__genres-item`, {[`catalog__genres-item--active`]: selectedItem})}>
-            <a href="#" className="catalog__genres-link">{label}</a>
+          <li key={index} className={classnames(`catalog__genres-item`, {[`catalog__genres-item--active`]: activeKey === item})}>
+            <a id={item} href="#" className="catalog__genres-link">{item}</a>
           </li>
         );
       })}
@@ -17,13 +18,7 @@ const GenresList = ({genresItems}) => {
 };
 
 GenresList.propTypes = {
-  genresItems: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        selectedItem: PropTypes.bool
-      })
-  ),
+  genresItems: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default GenresList;

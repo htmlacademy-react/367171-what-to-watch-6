@@ -40,6 +40,8 @@ export const getTwoArraysFromOne = (array) => {
 
 export const getStringRatingMovie = (rating) => rating.toString().replace(/\./g, `,`);
 
+export const getUpperCaseStringWithoutSpaces = (string) => string.toLowerCase().replace(/\ /g, `-`);
+
 export const getCommentDate = (date) => moment(date).format(`MMMM DD, YYYY`);
 
 export const getCommentDateTime = (date) => moment(date).format(`YYYY-MM-DD`);
@@ -53,13 +55,7 @@ export const getGenresItems = (movies) => {
   const genresArray = Array.from(genreSet);
   genresArray.unshift(`All genres`);
 
-  return genresArray.map((item)=> {
-    return ({
-      name: item.toLowerCase().replace(/\ /g, `-`),
-      label: item,
-      selectedItem: item === `All genres` ? true : false
-    });
-  });
+  return genresArray;
 };
 
 

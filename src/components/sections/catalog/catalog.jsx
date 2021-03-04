@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import ButtonShowMore from "../../blocks/button-show-more/button-show-more";
 import MoviesList from "../../blocks/movies-list/movies-list";
 import PropTypes from "prop-types";
@@ -7,19 +7,31 @@ import classnames from "classnames";
 import MovieCard from "../movie-card/movie-card";
 import {getGenresItems} from "../../utils/utils";
 
-const Catalog = ({movieItems, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
+const Catalog = ({movieItems, currentMovieGenre, defaultActiveKey = `All genres`, filter = false, title = `Catalog`, className}) => {
 
   const genresItems = getGenresItems(movieItems);
-
   const similarMovies = movieItems.filter(({genre}) => genre === currentMovieGenre);
 
-  const movies = currentMovieGenre ? similarMovies : movieItems;
+  const [isActiveKey, setActiveKey] = useState(defaultActiveKey);
+  const [isCurrentMoviesList, setCurrentMoviesList] = useState(movieItems);
+
+  const currentMovieItems = movieItems.filter(({genre}) => genre === isActiveKey);
+
+  const movies = currentMovieGenre ? similarMovies : isCurrentMoviesList;
+
+  const onClick = (evt) => {
+    evt.preventDefault();
+    setActiveKey(evt.target.id);
+    if (isActiveKey !== evt.target.id) {
+      setCurrentMoviesList(currentMovieItems);
+    }
+  };
 
   return (
     <section className={(classnames(`catalog`, className))}>
       <h2 className={classnames(`catalog-title`, {[`visually-hidden`]: title === `Catalog`})}>{title}</h2>
 
-      {filter ? <GenresList genresItems={genresItems}/> : null}
+      {filter ? <GenresList genresItems={genresItems} activeKey={isActiveKey} onClick={onClick}/> : null}
 
       <MoviesList movieItems={movies}/>
 
