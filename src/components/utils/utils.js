@@ -43,3 +43,23 @@ export const getStringRatingMovie = (rating) => rating.toString().replace(/\./g,
 export const getCommentDate = (date) => moment(date).format(`MMMM DD, YYYY`);
 
 export const getCommentDateTime = (date) => moment(date).format(`YYYY-MM-DD`);
+
+export const getGenresItems = (movies) => {
+  if (movies.length === 0) {
+    return 0;
+  }
+  const genresList = movies.map((element) => element.genre).flat();
+  const genreSet = new Set(genresList);
+  const genresArray = Array.from(genreSet);
+  genresArray.unshift(`All genres`);
+
+  return genresArray.map((item)=> {
+    return ({
+      name: item.toLowerCase().replace(/\ /g, `-`),
+      label: item,
+      selectedItem: item === `All genres` ? true : false
+    });
+  });
+};
+
+

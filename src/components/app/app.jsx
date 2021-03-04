@@ -9,12 +9,12 @@ import AddReview from "../pages/add-review/add-review";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {RoutePath} from "../constants/routes";
 
-const App = ({movieItems, genresItems, promoMovie}) => {
+const App = ({movieItems, promoMovie}) => {
   return (
     <Router>
       <Switch>
         <Route path={RoutePath.ROOT} exact render={
-          () => <MainPage genresItems={genresItems} movieItems={movieItems} promoMovie={promoMovie}/>
+          () => <MainPage movieItems={movieItems} promoMovie={promoMovie}/>
         }/>
         <Route path={RoutePath.LOGIN} exact component={SignIn}/>
         <Route path={RoutePath.MY_LIST} exact component={MyList}/>
