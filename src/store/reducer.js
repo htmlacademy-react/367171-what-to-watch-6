@@ -1,22 +1,26 @@
 import {movieItems} from "../mocks/movie-items";
+import {getGenresItems} from "../components/utils/utils";
+import {ActionType} from "./actions";
 
 export const initialState = {
   movies: movieItems,
-  genres: `All genres`
+  currentGenre: `All genres`,
+  genresItems: getGenresItems(movieItems)
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case `CHANGE_FILTER`:
+    case ActionType.CHANGE_FILTER:
       return {
         ...state,
-        genres: action.payload
+        currentGenre: action.payload,
+        movies: state.movies.filter(({genre}) => action.payload === `All genres` ? genre : genre === action.payload)
       };
+    case ActionType.RESET_FILTER:
+      return {...initialState};
     default:
       return state;
   }
-  return state;
 };
-
 
 export {reducer};

@@ -1,25 +1,23 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from "../../../store/actions";
-import {getGenresItems} from "../../utils/utils";
 
-const GenresList = ({movies, genres, changeFilter}) => {
+const GenresList = ({genresItems, currentGenre, resetFilter, changeGenre}) => {
 
-  const genresItems = getGenresItems(movies);
-
-  const onChangeFilterClick = (evt) => {
+  const onChangeFilter = (evt) => {
     evt.preventDefault();
-    changeFilter(evt);
+    resetFilter();
+    changeGenre(evt);
   };
 
   return (
-    <ul className="catalog__genres-list" onClick={onChangeFilterClick}>
+    <ul className="catalog__genres-list" onClick={onChangeFilter}>
       {genresItems.map((item, index) => {
         return (
-          <li key={index} className={classnames(`catalog__genres-item`, {[`catalog__genres-item--active`]: genres === item})}>
+          <li key={index} className={classnames(`catalog__genres-item`, {[`catalog__genres-item--active`]: currentGenre === item})}>
             <a id={item} href="#" className="catalog__genres-link">{item}</a>
           </li>
         );
@@ -29,18 +27,21 @@ const GenresList = ({movies, genres, changeFilter}) => {
 };
 
 GenresList.propTypes = {
-  genresItems: PropTypes.arrayOf(PropTypes.string)
+  currentGenre: PropTypes.string,
+  genresItems: PropTypes.arrayOf(PropTypes.string),
+  resetFilter: PropTypes.func,
+  changeGenre: PropTypes.func
 };
 
-const mapStateToProps = ({genres, movies}) => {
-  return {genres, movies};
+const mapStateToProps = ({currentGenre, genresItems}) => {
+  return {currentGenre, genresItems};
 };
 
 const mapDispatchToProps = (dispatch) => {
 
-  const {changeFilter} = bindActionCreators(actions, dispatch);
+  const {changeGenre, resetFilter} = bindActionCreators(actions, dispatch);
 
-  return {changeFilter};
+  return {changeGenre, resetFilter};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

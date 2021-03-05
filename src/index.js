@@ -6,8 +6,8 @@ import {Provider} from "react-redux";
 import store from "./store/store";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App promoMovie={promoMovie}/>
-  </Provider>,
+    <Provider store={store}>
+      <App promoMovie={promoMovie}/>
+    </Provider>,
     document.querySelector(`#root`)
 );
