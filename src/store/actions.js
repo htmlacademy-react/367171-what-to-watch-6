@@ -1,9 +1,4 @@
-export const ActionType = {
-  INCREMENT_MISTAKES: `game/incrementMistake`,
-  INCREMENT_STEP: `game/incrementStep`,
-};
+export const changeFilter = (evt) => {
 
-export const ActionFilterType = {
-  ALL_GENRES: `all genres`,
-  ACTIVE_GENRE: `active genre`
+  return ({type: `CHANGE_FILTER`, payload: evt.target.id})
 };

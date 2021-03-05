@@ -1,42 +1,28 @@
-import React, {useState} from "react";
+import React from "react";
 import ButtonShowMore from "../../blocks/button-show-more/button-show-more";
 import MoviesList from "../../blocks/movies-list/movies-list";
 import PropTypes from "prop-types";
 import GenresList from "../../blocks/genres-list/genres-list";
 import classnames from "classnames";
 import MovieCard from "../movie-card/movie-card";
-import {getGenresItems} from "../../utils/utils";
+
 import {connect} from "react-redux";
 
-const Catalog = ({movies, genres, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
+const Catalog = ({movies, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
 
-  const genresItems = getGenresItems(movies);
   const similarMovies = movies.filter(({genre}) => genre === currentMovieGenre);
 
-  const [isActiveKey, setActiveKey] = useState(genres);
-  const [isCurrentMoviesList, setCurrentMoviesList] = useState(movies);
-
-  const currentMovieItems = movies.filter(({genre}) => genre === isActiveKey);
-
-  const movieItems = currentMovieGenre ? similarMovies : isCurrentMoviesList;
-
-  const onClick = (evt) => {
-    evt.preventDefault();
-    setActiveKey(evt.target.id);
-    if (isActiveKey !== evt.target.id) {
-      setCurrentMoviesList(currentMovieItems);
-    }
-  };
+  const moviesItems = currentMovieGenre ? similarMovies : movies;
 
   return (
     <section className={(classnames(`catalog`, className))}>
       <h2 className={classnames(`catalog-title`, {[`visually-hidden`]: title === `Catalog`})}>{title}</h2>
 
-      {filter ? <GenresList genresItems={genresItems} activeKey={isActiveKey} onClick={onClick}/> : null}
+      {filter ? <GenresList /> : null}
 
-      <MoviesList movieItems={movieItems}/>
+      <MoviesList movieItems={moviesItems}/>
 
-      {movieItems.length > 4 ? <ButtonShowMore/> : null}
+      {moviesItems.length > 4 ? <ButtonShowMore/> : null}
 
     </section>
   );
@@ -51,11 +37,8 @@ Catalog.propTypes = {
   currentMovieGenre: PropTypes.string
 };
 
-const mapStateToProps = (state) => {
-  return {
-    movies: state.movies,
-    genres: state.genres
-  };
+const mapStateToProps = ({movies}) => {
+  return {movies};
 };
 
 export default connect(mapStateToProps)(Catalog);

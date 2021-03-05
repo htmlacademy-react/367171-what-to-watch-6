@@ -2,11 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./components/app/app";
 import promoMovie from "./mocks/promo-movie";
-import {createStore} from "redux";
-import {reducer} from "./store/reducer";
 import {Provider} from "react-redux";
-
-const store = createStore(reducer);
+import store from "./store/store";
 
 ReactDOM.render(
   <Provider store={store}>
