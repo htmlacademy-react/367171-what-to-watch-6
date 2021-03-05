@@ -4,7 +4,6 @@ import MovieCard from "../../sections/movie-card/movie-card";
 import InnerLayout from "../../layouts/inner-layout/inner-layout";
 import Catalog from "../../sections/catalog/catalog";
 import PageFooter from "../../sections/page-footer/page-footer";
-import {movieItems} from "../../../mocks/movie-items";
 import useMovie from "../../hooks/use-movie";
 
 const MoviePage = () => {
@@ -17,7 +16,7 @@ const MoviePage = () => {
     <MainLayout>
       <MovieCard type="full" currentMovie={currentMovie}/>
       <InnerLayout className={`page-content`}>
-        <Catalog currentMovieGenre={currentMovieGenre} className={`catalog--like-this`} movieItems={movieItems} title={`More like this`}/>
+        <Catalog currentMovieGenre={currentMovieGenre} className={`catalog--like-this`} title={`More like this`}/>
         <PageFooter/>
       </InnerLayout>
     </MainLayout>

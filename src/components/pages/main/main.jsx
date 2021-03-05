@@ -5,13 +5,13 @@ import MainLayout from "../../layouts/main-layout/main-layout";
 import PageFooter from "../../sections/page-footer/page-footer";
 import Catalog from "../../sections/catalog/catalog";
 
-const MainPage = ({movieItems, promoMovie}) => {
+const MainPage = ({promoMovie}) => {
 
   return (
     <MainLayout>
       <MovieCard type="short" currentMovie={promoMovie}/>
       <InnerLayout className={`page-content`}>
-        <Catalog movieItems={movieItems} filter={true}/>
+        <Catalog filter={true}/>
         <PageFooter/>
       </InnerLayout>
 

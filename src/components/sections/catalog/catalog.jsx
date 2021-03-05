@@ -6,18 +6,19 @@ import GenresList from "../../blocks/genres-list/genres-list";
 import classnames from "classnames";
 import MovieCard from "../movie-card/movie-card";
 import {getGenresItems} from "../../utils/utils";
+import {connect} from "react-redux";
 
-const Catalog = ({movieItems, currentMovieGenre, defaultActiveKey = `All genres`, filter = false, title = `Catalog`, className}) => {
+const Catalog = ({movies, genres, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
 
-  const genresItems = getGenresItems(movieItems);
-  const similarMovies = movieItems.filter(({genre}) => genre === currentMovieGenre);
+  const genresItems = getGenresItems(movies);
+  const similarMovies = movies.filter(({genre}) => genre === currentMovieGenre);
 
-  const [isActiveKey, setActiveKey] = useState(defaultActiveKey);
-  const [isCurrentMoviesList, setCurrentMoviesList] = useState(movieItems);
+  const [isActiveKey, setActiveKey] = useState(genres);
+  const [isCurrentMoviesList, setCurrentMoviesList] = useState(movies);
 
-  const currentMovieItems = movieItems.filter(({genre}) => genre === isActiveKey);
+  const currentMovieItems = movies.filter(({genre}) => genre === isActiveKey);
 
-  const movies = currentMovieGenre ? similarMovies : isCurrentMoviesList;
+  const movieItems = currentMovieGenre ? similarMovies : isCurrentMoviesList;
 
   const onClick = (evt) => {
     evt.preventDefault();
@@ -33,9 +34,9 @@ const Catalog = ({movieItems, currentMovieGenre, defaultActiveKey = `All genres`
 
       {filter ? <GenresList genresItems={genresItems} activeKey={isActiveKey} onClick={onClick}/> : null}
 
-      <MoviesList movieItems={movies}/>
+      <MoviesList movieItems={movieItems}/>
 
-      {movies.length > 4 ? <ButtonShowMore/> : null}
+      {movieItems.length > 4 ? <ButtonShowMore/> : null}
 
     </section>
   );
@@ -44,11 +45,17 @@ const Catalog = ({movieItems, currentMovieGenre, defaultActiveKey = `All genres`
 Catalog.propTypes = {
   ...MovieCard.propTypes,
   ...GenresList.propTypes,
-  ...MoviesList.propTypes,
   className: PropTypes.string,
   filter: PropTypes.bool,
   title: PropTypes.string,
   currentMovieGenre: PropTypes.string
 };
 
-export default Catalog;
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+    genres: state.genres
+  };
+};
+
+export default connect(mapStateToProps)(Catalog);
