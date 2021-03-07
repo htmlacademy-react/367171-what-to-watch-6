@@ -10,7 +10,6 @@ import {fetchMoviesList} from "../../../store/api-actions";
 
 const Catalog = ({movies, isDataLoaded, onLoadData, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
 
-  console.log(movies)
   useEffect(() => {
     if (!isDataLoaded) {
       onLoadData();
