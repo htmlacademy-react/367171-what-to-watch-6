@@ -33,9 +33,10 @@ GenresList.propTypes = {
   changeGenre: PropTypes.func
 };
 
-const mapStateToProps = ({currentGenre, genresItems}) => {
-  return {currentGenre, genresItems};
-};
+const mapStateToProps = (state) => ({
+  currentGenre: state.currentGenre,
+  genresItems: state.genresItems
+});
 
 const mapDispatchToProps = (dispatch) => {
 
