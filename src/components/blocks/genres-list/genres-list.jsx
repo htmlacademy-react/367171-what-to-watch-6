@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from "../../../store/actions";
 import {getGenresItems} from "../../utils/utils";
+import MoviesList from "../movies-list/movies-list";
 
 const GenresList = ({movies, currentGenre, resetFilter, changeGenre}) => {
 
@@ -30,6 +31,7 @@ const GenresList = ({movies, currentGenre, resetFilter, changeGenre}) => {
 };
 
 GenresList.propTypes = {
+  ...MoviesList.propTypes,
   currentGenre: PropTypes.string,
   genresItems: PropTypes.arrayOf(PropTypes.string),
   resetFilter: PropTypes.func,
