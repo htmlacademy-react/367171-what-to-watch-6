@@ -1,14 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as actions from "../../../store/actions";
 
-const GenresList = ({genresItems}) => {
+const GenresList = ({genresItems, currentGenre, resetFilter, changeGenre}) => {
+
+  const onChangeFilter = (evt) => {
+    evt.preventDefault();
+    resetFilter();
+    changeGenre(evt);
+  };
+
   return (
-    <ul className="catalog__genres-list">
-      {genresItems.map(({name, label, selectedItem}) => {
+    <ul className="catalog__genres-list" onClick={onChangeFilter}>
+      {genresItems.map((item, index) => {
         return (
-          <li key={name} className={classnames(`catalog__genres-item`, {[`catalog__genres-item--active`]: selectedItem})}>
-            <a href="#" className="catalog__genres-link">{label}</a>
+          <li key={index} className={classnames(`catalog__genres-item`, {[`catalog__genres-item--active`]: currentGenre === item})}>
+            <a id={item} href="#" className="catalog__genres-link">{item}</a>
           </li>
         );
       })}
@@ -17,13 +27,21 @@ const GenresList = ({genresItems}) => {
 };
 
 GenresList.propTypes = {
-  genresItems: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        selectedItem: PropTypes.bool
-      })
-  ),
+  currentGenre: PropTypes.string,
+  genresItems: PropTypes.arrayOf(PropTypes.string),
+  resetFilter: PropTypes.func,
+  changeGenre: PropTypes.func
 };
 
-export default GenresList;
+const mapStateToProps = ({currentGenre, genresItems}) => {
+  return {currentGenre, genresItems};
+};
+
+const mapDispatchToProps = (dispatch) => {
+
+  const {changeGenre, resetFilter} = bindActionCreators(actions, dispatch);
+
+  return {changeGenre, resetFilter};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

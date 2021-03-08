@@ -6,21 +6,23 @@ import GenresList from "../../blocks/genres-list/genres-list";
 import classnames from "classnames";
 import MovieCard from "../movie-card/movie-card";
 
-const Catalog = ({movieItems, genresItems, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
+import {connect} from "react-redux";
 
-  const similarMovies = movieItems.filter(({genre}) => genre === currentMovieGenre);
+const Catalog = ({movies, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
 
-  const movies = currentMovieGenre ? similarMovies : movieItems;
+  const similarMovies = movies.filter(({genre}) => genre === currentMovieGenre);
+
+  const moviesItems = currentMovieGenre ? similarMovies : movies;
 
   return (
     <section className={(classnames(`catalog`, className))}>
       <h2 className={classnames(`catalog-title`, {[`visually-hidden`]: title === `Catalog`})}>{title}</h2>
 
-      {filter ? <GenresList genresItems={genresItems}/> : null}
+      {filter ? <GenresList /> : null}
 
-      <MoviesList movieItems={movies}/>
+      <MoviesList movieItems={moviesItems}/>
 
-      {movies.length > 4 ? <ButtonShowMore/> : null}
+      {moviesItems.length > 4 ? <ButtonShowMore/> : null}
 
     </section>
   );
@@ -29,11 +31,14 @@ const Catalog = ({movieItems, genresItems, currentMovieGenre, filter = false, ti
 Catalog.propTypes = {
   ...MovieCard.propTypes,
   ...GenresList.propTypes,
-  ...MoviesList.propTypes,
   className: PropTypes.string,
   filter: PropTypes.bool,
   title: PropTypes.string,
   currentMovieGenre: PropTypes.string
 };
 
-export default Catalog;
+const mapStateToProps = ({movies}) => {
+  return {movies};
+};
+
+export default connect(mapStateToProps)(Catalog);

@@ -3,7 +3,6 @@ import MainLayout from "../../layouts/main-layout/main-layout";
 import InnerLayout from "../../layouts/inner-layout/inner-layout";
 import PageFooter from "../../sections/page-footer/page-footer";
 import Catalog from "../../sections/catalog/catalog";
-import {movieItems} from "../../../mocks/movie-items";
 import PageHeader from "../../sections/page-header/page-header";
 
 const MyList = () => {
@@ -11,7 +10,7 @@ const MyList = () => {
     <MainLayout>
       <InnerLayout className={`user-page`}>
         <PageHeader activeLink={true} className={`user-page__head`}/>
-        <Catalog movieItems={movieItems}/>
+        <Catalog />
         <PageFooter/>
       </InnerLayout>
     </MainLayout>

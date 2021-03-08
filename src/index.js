@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./components/app/app";
-import {movieItems} from "./mocks/movie-items";
-import {genresItems} from "./mocks/genres-list";
 import promoMovie from "./mocks/promo-movie";
-
+import {Provider} from "react-redux";
+import store from "./store/store";
 
 ReactDOM.render(
-    <App genresItems={genresItems} movieItems={movieItems} promoMovie={promoMovie}/>,
+    <Provider store={store}>
+      <App promoMovie={promoMovie}/>
+    </Provider>,
     document.querySelector(`#root`)
 );
