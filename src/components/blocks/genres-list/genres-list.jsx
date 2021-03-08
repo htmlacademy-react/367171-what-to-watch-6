@@ -4,8 +4,11 @@ import classnames from "classnames";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from "../../../store/actions";
+import {getGenresItems} from "../../utils/utils";
 
-const GenresList = ({genresItems, currentGenre, resetFilter, changeGenre}) => {
+const GenresList = ({movies, currentGenre, resetFilter, changeGenre}) => {
+
+  const genresItems = getGenresItems(movies);
 
   const onChangeFilter = (evt) => {
     evt.preventDefault();
@@ -35,7 +38,7 @@ GenresList.propTypes = {
 
 const mapStateToProps = (state) => ({
   currentGenre: state.currentGenre,
-  genresItems: state.genresItems
+  movies: state.movies
 });
 
 const mapDispatchToProps = (dispatch) => {

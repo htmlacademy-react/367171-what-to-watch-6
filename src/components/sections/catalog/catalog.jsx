@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import ButtonShowMore from "../../blocks/button-show-more/button-show-more";
 import MoviesList from "../../blocks/movies-list/movies-list";
 import PropTypes from "prop-types";
@@ -8,13 +8,22 @@ import MovieCard from "../movie-card/movie-card";
 import {connect} from "react-redux";
 import {fetchMoviesList} from "../../../store/api-actions";
 
-const Catalog = ({movies, isDataLoaded, onLoadData, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
+const Catalog = ({movies, isDataLoaded, onLoadData, currentGenre, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
 
   useEffect(() => {
     if (!isDataLoaded) {
       onLoadData();
     }
   }, [isDataLoaded]);
+
+  const [isFilteredMovies, setFilteredMovies] = useState(movies);
+
+  useEffect(() => {
+    if (isDataLoaded) {
+      const filteredMovies = movies.filter(({genre}) => currentGenre === `All genres` ? genre : genre === currentGenre);
+      setFilteredMovies(filteredMovies);
+    }
+  }, [isDataLoaded, currentGenre]);
 
   if (!isDataLoaded) {
     return (
@@ -24,8 +33,10 @@ const Catalog = ({movies, isDataLoaded, onLoadData, currentMovieGenre, filter = 
     );
   }
 
+
+
   const similarMovies = movies.filter(({genre}) => genre === currentMovieGenre);
-  const moviesItems = currentMovieGenre ? similarMovies : movies;
+  const moviesItems = currentMovieGenre ? similarMovies : isFilteredMovies;
 
   return (
     <section className={(classnames(`catalog`, className))}>
@@ -52,7 +63,8 @@ Catalog.propTypes = {
 
 const mapStateToProps = (state) => ({
   isDataLoaded: state.isDataLoaded,
-  movies: state.movies
+  movies: state.movies,
+  currentGenre: state.currentGenre
 });
 
 const mapDispatchToProps = (dispatch) => ({

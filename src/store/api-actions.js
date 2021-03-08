@@ -1,5 +1,5 @@
 import {loadMovies, requireAuthorization} from "./actions";
-import {AuthorizationStatus} from "../../../guess-melody-6/src/const";
+import {AuthorizationStatus} from "../components/constants/auth";
 
 const transformMovie = (movie) => ({
   name: movie.name,

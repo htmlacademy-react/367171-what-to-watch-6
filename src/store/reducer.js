@@ -6,7 +6,6 @@ export const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   movies: [],
   currentGenre: `All genres`,
-  genresItems: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,8 +24,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_FILTER:
       return {
         ...state,
-        currentGenre: action.payload,
-        movies: state.movies.filter(({genre}) => action.payload === `All genres` ? genre : genre === action.payload)
+        currentGenre: action.payload
       };
     case ActionType.RESET_FILTER:
       return {...initialState};
