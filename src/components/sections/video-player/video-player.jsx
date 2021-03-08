@@ -20,6 +20,7 @@ const VideoPlayer = ({id, isMuted = false, isPlaying = true, src, onButtonExitCl
   useEffect(() => {
     if (videoRef.current && isPlaying && !isMuted) {
       videoRef.current.play();
+      return;
     }
 
     if (videoRef.current && isPlaying && isMuted) {
