@@ -20,13 +20,11 @@ const VideoPlayer = ({id, isMuted = false, isPlaying = true, src, onButtonExitCl
   useEffect(() => {
     if (videoRef.current && isPlaying && !isMuted) {
       videoRef.current.play();
-      return;
     }
 
     if (videoRef.current && isPlaying && isMuted) {
       const timeout = setTimeout(()=> {
         videoRef.current.play();
-        return;
       }, 1000);
 
       return ()=> clearTimeout(timeout);
