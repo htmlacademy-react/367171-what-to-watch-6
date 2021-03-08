@@ -7,6 +7,7 @@ import classnames from "classnames";
 import MovieCard from "../movie-card/movie-card";
 import {connect} from "react-redux";
 import {fetchMoviesList} from "../../../store/api-actions";
+import Loader from "../../blocks/loader/loader";
 
 const Catalog = ({movies, isDataLoaded, onLoadData, currentGenre, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
 
@@ -27,13 +28,9 @@ const Catalog = ({movies, isDataLoaded, onLoadData, currentGenre, currentMovieGe
 
   if (!isDataLoaded) {
     return (
-      <div style={{textAlign: `center`}}>
-        <h1>Loading ...</h1>
-      </div>
+      <Loader/>
     );
   }
-
-
 
   const similarMovies = movies.filter(({genre}) => genre === currentMovieGenre);
   const moviesItems = currentMovieGenre ? similarMovies : isFilteredMovies;
