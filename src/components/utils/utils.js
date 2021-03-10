@@ -58,4 +58,17 @@ export const getGenresItems = (movies) => {
   return genresArray;
 };
 
+export const transformMovie = (movie) => ({
+  ...movie,
+  posterImage: movie.poster_image,
+  previewImage: movie.preview_image,
+  backgroundImage: movie.background_image,
+  backgroundColor: movie.background_color,
+  scoresCount: movie.scores_count,
+  isFavorite: movie.is_favorite,
+  videoLink: movie.video_link,
+  previewVideoLink: movie.preview_video_link
+});
+
+
 
