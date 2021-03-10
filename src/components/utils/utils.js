@@ -64,6 +64,7 @@ export const transformMovie = (movie) => ({
   previewImage: movie.preview_image,
   backgroundImage: movie.background_image,
   backgroundColor: movie.background_color,
+  runTime: movie.run_time,
   scoresCount: movie.scores_count,
   isFavorite: movie.is_favorite,
   videoLink: movie.video_link,
