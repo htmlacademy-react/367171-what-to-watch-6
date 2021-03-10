@@ -24,7 +24,7 @@ MoviesList.propTypes = {
         name: PropTypes.string,
         previewImage: PropTypes.string
       })
-  ).isRequired,
+  ),
 };
 
 export default MoviesList;

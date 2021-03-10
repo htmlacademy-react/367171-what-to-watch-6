@@ -1,12 +1,13 @@
 import React from "react";
 import MainLayout from "../../layouts/main-layout/main-layout";
 import MovieCard from "../../sections/movie-card/movie-card";
-import PropTypes from "prop-types";
 import useMovie from "../../hooks/use-movie";
+import {connect} from "react-redux";
+import MoviesList from "../../blocks/movies-list/movies-list";
 
-const AddReview = () => {
+const AddReview = ({movies}) => {
 
-  const currentMovie = useMovie();
+  const currentMovie = useMovie(movies);
 
   return (
     <MainLayout>
@@ -15,8 +16,10 @@ const AddReview = () => {
   );
 };
 
-AddReview.propTypes = {
-  itemId: PropTypes.number
-};
+AddReview.propTypes = {...MoviesList.propTypes};
 
-export default AddReview;
+const mapStateToProps = (state) => ({
+  movies: state.movies
+});
+
+export default connect(mapStateToProps)(AddReview);
