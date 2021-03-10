@@ -8,8 +8,9 @@ import MovieCard from "../movie-card/movie-card";
 import {connect} from "react-redux";
 import {fetchMoviesList} from "../../../store/api-actions";
 import Loader from "../../blocks/loader/loader";
+import {showMoreMovies} from "../../../store/actions";
 
-const Catalog = ({movies, isDataLoaded, onLoadData, currentGenre, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
+const Catalog = ({movies, isDataLoaded, onLoadData, currentGenre, renderedMoviesCount, onButtonShowMoreClick, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
 
   useEffect(() => {
     if (!isDataLoaded) {
@@ -25,7 +26,6 @@ const Catalog = ({movies, isDataLoaded, onLoadData, currentGenre, currentMovieGe
       setFilteredMovies(filteredMovies);
     }
   }, [isDataLoaded, currentGenre]);
-
   if (!isDataLoaded) {
     return (
       <Loader/>
@@ -35,15 +35,17 @@ const Catalog = ({movies, isDataLoaded, onLoadData, currentGenre, currentMovieGe
   const similarMovies = movies.filter(({genre}) => genre === currentMovieGenre);
   const moviesItems = currentMovieGenre ? similarMovies : isFilteredMovies;
 
+  const movieList = moviesItems.slice(0, Math.min(moviesItems.length, renderedMoviesCount));
+
   return (
     <section className={(classnames(`catalog`, className))}>
       <h2 className={classnames(`catalog-title`, {[`visually-hidden`]: title === `Catalog`})}>{title}</h2>
 
       {filter ? <GenresList /> : null}
 
-      <MoviesList movieItems={moviesItems}/>
+      <MoviesList movieItems={movieList}/>
 
-      {moviesItems.length > 8 ? <ButtonShowMore/> : null}
+      {moviesItems.length > renderedMoviesCount ? <ButtonShowMore onClick={onButtonShowMoreClick}/> : null}
 
     </section>
   );
@@ -61,12 +63,16 @@ Catalog.propTypes = {
 const mapStateToProps = (state) => ({
   isDataLoaded: state.isDataLoaded,
   movies: state.movies,
-  currentGenre: state.currentGenre
+  currentGenre: state.currentGenre,
+  renderedMoviesCount: state.renderedMoviesCount
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onLoadData() {
     dispatch(fetchMoviesList());
+  },
+  onButtonShowMoreClick() {
+    dispatch(showMoreMovies());
   }
 });
 

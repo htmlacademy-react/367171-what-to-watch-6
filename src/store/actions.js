@@ -2,6 +2,7 @@ export const ActionType = {
   CHANGE_FILTER: `movies/changeFilter`,
   RESET_FILTER: `movies/resetFilter`,
   LOAD_MOVIES: `movies/loadMovies`,
+  SHOW_MORE: `movies/showMoreMovies`,
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
 };
 
@@ -17,6 +18,10 @@ export const resetFilter = () => ({
 export const loadMovies = (movies) => ({
   type: ActionType.LOAD_MOVIES,
   payload: movies
+});
+
+export const showMoreMovies = () => ({
+  type: ActionType.SHOW_MORE,
 });
 
 export const requireAuthorization = (status) => ({
