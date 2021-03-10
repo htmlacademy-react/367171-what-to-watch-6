@@ -10,12 +10,6 @@ const AuthForm = ({onSubmit}) => {
 
   const history = useHistory();
 
-  useEffect(()=> {
-    if (loginRef.current) {
-      loginRef.current !==
-    }
-  });
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
