@@ -2,7 +2,6 @@ import React from "react";
 import {connect} from "react-redux";
 import {AuthorizationStatus} from "../../constants/auth";
 import Tooltip from "../tooltip/tooltip";
-import {logOut} from "../../../store/actions";
 import {RoutePath} from "../../constants/routes";
 import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";
@@ -25,10 +24,15 @@ const SignIn = () => {
 };
 
 const UserBlock = ({authorizationStatus, onLogOut}) => {
+  const history = useHistory();
+  const {location} = history;
+  const {pathname} = location;
+
+  const style = pathname !== RoutePath.MY_LIST ? {cursor: `pointer`} : null;
 
   return authorizationStatus === AuthorizationStatus.AUTH ?
     (<Tooltip title={<LogOut onClick={onLogOut}/>} style={{marginLeft: `auto`}}>
-      <div className="user-block">
+      <div className="user-block" style={style} onClick={()=> history.push(RoutePath.MY_LIST)}>
         <div className="user-block__avatar">
           <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
         </div>
