@@ -12,15 +12,15 @@ const AuthForm = ({onSubmit}) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-
     onSubmit({
       login: loginRef.current.value,
       password: passwordRef.current.value,
     });
+    history.push(RoutePath.ROOT);
   };
 
   return (
-    <form action="#" className="sign-in__form" onSubmit={handleSubmit}>
+    <form action="#" className="sign-in__form">
 
       <div className="sign-in__fields">
         <div className="sign-in__field">
@@ -44,7 +44,7 @@ const AuthForm = ({onSubmit}) => {
       </div>
 
       <div className="sign-in__submit">
-        <button className="sign-in__btn" type="submit" onClick={() => history.push(RoutePath.ROOT)}>Sign in</button>
+        <button className="sign-in__btn" type="submit" onClick={handleSubmit}>Sign in</button>
       </div>
     </form>
   );
