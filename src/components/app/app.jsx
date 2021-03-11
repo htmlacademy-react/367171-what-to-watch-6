@@ -8,6 +8,7 @@ import MoviePage from "../pages/movie-page/movie-page";
 import AddReview from "../pages/add-review/add-review";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {RoutePath} from "../constants/routes";
+import {PrivateRoute} from "../blocks/private-route/private-route";
 
 const App = ({promoMovie}) => {
   return (
@@ -17,11 +18,11 @@ const App = ({promoMovie}) => {
           () => <MainPage promoMovie={promoMovie}/>
         }/>
         <Route path={RoutePath.LOGIN} exact component={SignIn}/>
-        <Route path={RoutePath.MY_LIST} exact component={MyList}/>
+        <PrivateRoute exact path={RoutePath.MY_LIST} render={()=> <MyList/>}/>
         {/* FIXME: провалидировать несуществующией страницы из-за отсутствия id*/}
         <Route path={RoutePath.PLAYER_ID} component={Player}/>
         <Route path={RoutePath.FILM_ID} exact component={MoviePage}/>
-        <Route path={RoutePath.FILM_REVIEW} component={AddReview}/>
+        <PrivateRoute path={RoutePath.FILM_REVIEW} render={()=> <AddReview/>}/>
         <Route component={NotFound}/>
       </Switch>
     </Router>
