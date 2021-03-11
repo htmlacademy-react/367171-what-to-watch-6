@@ -5,11 +5,11 @@ import InnerLayout from "../../layouts/inner-layout/inner-layout";
 import Catalog from "../../sections/catalog/catalog";
 import PageFooter from "../../sections/page-footer/page-footer";
 import useMovie from "../../hooks/use-movie";
+import {connect} from "react-redux";
 
-const MoviePage = () => {
+const MoviePage = ({movies}) => {
 
-  const currentMovie = useMovie();
-
+  const currentMovie = useMovie(movies);
   const currentMovieGenre = currentMovie.genre;
 
   return (
@@ -25,4 +25,8 @@ const MoviePage = () => {
 
 MoviePage.propTypes = {...MovieCard.propTypes};
 
-export default MoviePage;
+const mapStateToProps = (state) => ({
+  movies: state.movies
+});
+
+export default connect(mapStateToProps)(MoviePage);

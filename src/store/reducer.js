@@ -1,20 +1,37 @@
-import {movieItems} from "../mocks/movie-items";
-import {getGenresItems} from "../components/utils/utils";
 import {ActionType} from "./actions";
+import {AuthorizationStatus} from "../components/constants/auth";
+import {MOVIES_COUNT_PER_STEP} from "../components/constants/common";
 
 export const initialState = {
-  movies: movieItems,
+  isDataLoaded: false,
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  movies: [],
   currentGenre: `All genres`,
-  genresItems: getGenresItems(movieItems)
+  renderedMoviesCount: MOVIES_COUNT_PER_STEP
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.LOAD_MOVIES:
+      return {
+        ...state,
+        movies: action.payload,
+        isDataLoaded: true
+      };
+    case ActionType.SHOW_MORE:
+      return {
+        ...state,
+        renderedMoviesCount: state.renderedMoviesCount + MOVIES_COUNT_PER_STEP
+      };
+    case ActionType.REQUIRED_AUTHORIZATION:
+      return {
+        ...state,
+        authorizationStatus: action.payload,
+      };
     case ActionType.CHANGE_FILTER:
       return {
         ...state,
-        currentGenre: action.payload,
-        movies: state.movies.filter(({genre}) => action.payload === `All genres` ? genre : genre === action.payload)
+        currentGenre: action.payload
       };
     case ActionType.RESET_FILTER:
       return {...initialState};
