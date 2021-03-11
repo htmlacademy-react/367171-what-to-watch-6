@@ -28,6 +28,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         authorizationStatus: action.payload,
       };
+    case ActionType.LOG_OUT:
+      return {
+        ...state,
+        authorizationStatus: action.payload,
+      };
     case ActionType.CHANGE_FILTER:
       return {
         ...state,

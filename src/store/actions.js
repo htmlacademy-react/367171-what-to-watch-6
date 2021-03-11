@@ -4,6 +4,7 @@ export const ActionType = {
   LOAD_MOVIES: `movies/loadMovies`,
   SHOW_MORE: `movies/showMoreMovies`,
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
+  LOG_OUT: `user/requiredAuthorization`,
 };
 
 export const changeGenre = (evt) => ({
@@ -26,5 +27,10 @@ export const showMoreMovies = () => ({
 
 export const requireAuthorization = (status) => ({
   type: ActionType.REQUIRED_AUTHORIZATION,
+  payload: status,
+});
+
+export const logOut = (status) => ({
+  type: ActionType.LOG_OUT,
   payload: status,
 });
