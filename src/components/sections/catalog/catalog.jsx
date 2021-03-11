@@ -14,6 +14,9 @@ import useFilter from "../../hooks/use-filter";
 const Catalog = ({movies, isDataLoaded, onLoadData, currentGenre, renderedMoviesCount, onButtonShowMoreClick, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
 
   const filteredMovies = useFilter(isDataLoaded, movies, currentGenre);
+  const similarMovies = movies.filter(({genre}) => genre === currentMovieGenre);
+  const moviesItems = currentMovieGenre ? similarMovies : filteredMovies;
+  const movieList = moviesItems.slice(0, Math.min(moviesItems.length, renderedMoviesCount));
 
   useEffect(() => {
     if (!isDataLoaded) {
@@ -21,19 +24,8 @@ const Catalog = ({movies, isDataLoaded, onLoadData, currentGenre, renderedMovies
     }
   }, [isDataLoaded]);
 
-  if (!isDataLoaded) {
-    return (
-      <Loader/>
-    );
-  }
-
-  const similarMovies = movies.filter(({genre}) => genre === currentMovieGenre);
-  const moviesItems = currentMovieGenre ? similarMovies : filteredMovies;
-
-  const movieList = moviesItems.slice(0, Math.min(moviesItems.length, renderedMoviesCount));
-
-  return (
-    <section className={(classnames(`catalog`, className))}>
+  return isDataLoaded ?
+    (<section className={(classnames(`catalog`, className))}>
       <h2 className={classnames(`catalog-title`, {[`visually-hidden`]: title === `Catalog`})}>{title}</h2>
 
       {filter ? <GenresList /> : null}
@@ -42,8 +34,7 @@ const Catalog = ({movies, isDataLoaded, onLoadData, currentGenre, renderedMovies
 
       {moviesItems.length > renderedMoviesCount ? <ButtonShowMore onClick={onButtonShowMoreClick}/> : null}
 
-    </section>
-  );
+    </section>) : <Loader/>;
 };
 
 Catalog.propTypes = {
