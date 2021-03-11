@@ -3,6 +3,7 @@ import {useHistory} from "react-router-dom";
 import {RoutePath} from "../../constants/routes";
 import {connect} from "react-redux";
 import {login} from "../../../store/api-actions";
+import PropTypes from "prop-types";
 
 const AuthForm = ({onSubmit}) => {
   const loginRef = useRef();
@@ -49,6 +50,8 @@ const AuthForm = ({onSubmit}) => {
     </form>
   );
 };
+
+AuthForm.propTypes = {onSubmit: PropTypes.func};
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(authData) {
