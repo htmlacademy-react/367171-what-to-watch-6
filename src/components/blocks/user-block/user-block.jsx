@@ -41,6 +41,7 @@ const UserBlock = ({authorizationStatus, authInfo, onLogOut}) => {
 
 UserBlock.propTypes = {
   authorizationStatus: PropTypes.string,
+  authInfo: PropTypes.string,
   onLogOut: PropTypes.func
 };
 
