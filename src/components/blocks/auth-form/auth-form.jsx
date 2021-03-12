@@ -1,6 +1,4 @@
 import React, {useRef} from "react";
-import {useHistory} from "react-router-dom";
-import {RoutePath} from "../../constants/routes";
 import {connect} from "react-redux";
 import {login} from "../../../store/api-actions";
 import PropTypes from "prop-types";
@@ -11,7 +9,6 @@ const AuthForm = ({onSubmit}) => {
   const loginRef = useRef();
   const passwordRef = useRef();
   const {register, handleSubmit, errors} = useForm();
-  const history = useHistory();
 
   const userMailRef = (evt) => {
     loginRef.current = evt;
@@ -31,7 +28,6 @@ const AuthForm = ({onSubmit}) => {
       login: loginRef.current.value,
       password: passwordRef.current.value,
     });
-    history.push(RoutePath.ROOT);
   };
 
   return (
@@ -51,12 +47,12 @@ const AuthForm = ({onSubmit}) => {
             id="user-email"/>
           <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
         </div>
-        <div className={classnames(`sign-in__fields`, {[`sign-in__field--error`]: errors.password})}>
+        <div className={classnames(`sign-in__fields`, {[`sign-in__field--error`]: errors.userPassword})}>
           <input ref={passWordRef}
             className="sign-in__input"
             type="password"
             placeholder="Password"
-            name="user-password"
+            name="userPassword"
             id="user-password"/>
           <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
         </div>
