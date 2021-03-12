@@ -4,6 +4,7 @@ import {login} from "../../../store/api-actions";
 import PropTypes from "prop-types";
 import {useForm} from "react-hook-form";
 import classnames from "classnames";
+import {loadAuthInfo} from "../../../store/actions";
 
 const AuthForm = ({onSubmit}) => {
   const loginRef = useRef();

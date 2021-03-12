@@ -7,10 +7,6 @@ import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";
 import {logout} from "../../../store/api-actions";
 
-const LogOut = ({onClick}) => <div style={{cursor: `pointer`}} onClick={onClick}>Log out</div>;
-
-LogOut.propTypes = {onClick: PropTypes.func};
-
 const SignIn = () => {
   const history = useHistory();
   const onSignIn = (evt)=> {
@@ -23,7 +19,7 @@ const SignIn = () => {
   );
 };
 
-const UserBlock = ({authorizationStatus, onLogOut}) => {
+const UserBlock = ({authorizationStatus, authInfo, onLogOut}) => {
   const history = useHistory();
   const {location} = history;
   const {pathname} = location;
@@ -31,13 +27,16 @@ const UserBlock = ({authorizationStatus, onLogOut}) => {
   const style = pathname !== RoutePath.MY_LIST ? {cursor: `pointer`} : null;
 
   return authorizationStatus === AuthorizationStatus.AUTH ?
-    (<Tooltip title={<LogOut onClick={onLogOut}/>} style={{marginLeft: `auto`}}>
-      <div className="user-block" style={style} onClick={()=> history.push(RoutePath.MY_LIST)}>
-        <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+    (<>
+      <Tooltip onClick={onLogOut} title="Log out" style={{marginLeft: `auto`}}>
+        <div className="user-block" style={style} onClick={()=> history.push(RoutePath.MY_LIST)}>
+          <div className="user-block__avatar">
+            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+          </div>
         </div>
-      </div>
-    </Tooltip>) : <SignIn/>;
+        {authInfo}
+      </Tooltip>
+    </>) : <SignIn/>;
 };
 
 UserBlock.propTypes = {
@@ -46,7 +45,8 @@ UserBlock.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  authorizationStatus: state.authorizationStatus
+  authorizationStatus: state.authorizationStatus,
+  authInfo: state.authInfo
 });
 
 const mapDispatchToProps = (dispatch) => ({
