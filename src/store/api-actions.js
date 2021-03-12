@@ -1,6 +1,6 @@
-import {loadMovies, logOut, requireAuthorization} from "./actions";
+import {loadMovies, logOut, redirectToRoute, requireAuthorization} from "./actions";
 import {AuthorizationStatus} from "../components/constants/auth";
-import {APIRoute} from "../components/constants/routes";
+import {APIRoute, RoutePath} from "../components/constants/routes";
 import {transformMovie} from "../components/utils/utils";
 
 export const fetchMoviesList = () => (dispatch, _getState, api) => (
@@ -18,6 +18,7 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    .then(() => dispatch(redirectToRoute(RoutePath.ROOT)))
 );
 
 export const logout = ({login: email, password}) => (dispatch, _getState, api) => (

@@ -5,6 +5,7 @@ export const ActionType = {
   SHOW_MORE: `movies/showMoreMovies`,
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
   LOG_OUT: `user/requiredAuthorization`,
+  REDIRECT_TO_ROUTE: `movies/redirectToRoute`,
 };
 
 export const changeGenre = (evt) => ({
@@ -33,4 +34,9 @@ export const requireAuthorization = (status) => ({
 export const logOut = (status) => ({
   type: ActionType.LOG_OUT,
   payload: status,
+});
+
+export const redirectToRoute = (url) => ({
+  type: ActionType.REDIRECT_TO_ROUTE,
+  payload: url,
 });
