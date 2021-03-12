@@ -39,7 +39,10 @@ const reducer = (state = initialState, action) => {
         currentGenre: action.payload
       };
     case ActionType.RESET_FILTER:
-      return {...initialState};
+      return {
+        ...state,
+        currentGenre: `All genres`
+      };
     default:
       return state;
   }
