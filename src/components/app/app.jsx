@@ -8,8 +8,8 @@ import MoviePage from "../pages/movie-page/movie-page";
 import AddReview from "../pages/add-review/add-review";
 import {Router, Route, Switch} from "react-router-dom";
 import {RoutePath} from "../constants/routes";
-import {PrivateRoute} from "../blocks/private-route/private-route";
 import browserHistory from "../../browser-history";
+import PrivateRoute from "../blocks/private-route/private-route";
 
 const App = ({promoMovie}) => {
   return (
