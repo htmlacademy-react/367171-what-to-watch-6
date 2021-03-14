@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react';
-import MovieCardPreview from "../blocks/movies-list/movie-card-preview/movie-card-preview";
-import VideoPlayer from "../sections/video-player/video-player";
+import MovieCardPreview from "../components/blocks/movies-list/movie-card-preview/movie-card-preview";
+import VideoPlayer from "../components/sections/video-player/video-player";
 import {RoutePath} from "../constants/routes";
 import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";

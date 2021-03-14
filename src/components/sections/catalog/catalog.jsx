@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 import {fetchMoviesList} from "../../../store/api-actions";
 import Loader from "../../blocks/loader/loader";
 import {showMoreMovies} from "../../../store/actions";
-import useFilter from "../../hooks/use-filter";
+import useFilter from "../../../hooks/use-filter";
 
 const Catalog = ({movies, isDataLoaded, onLoadData, currentGenre, renderedMoviesCount, onButtonShowMoreClick, currentMovieGenre, filter = false, title = `Catalog`, className}) => {
 

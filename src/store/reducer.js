@@ -1,6 +1,6 @@
 import {ActionType} from "./actions";
-import {AuthorizationStatus} from "../components/constants/auth";
-import {MOVIES_COUNT_PER_STEP} from "../components/constants/common";
+import {AuthorizationStatus} from "../constants/auth";
+import {MOVIES_COUNT_PER_STEP} from "../constants/common";
 
 export const initialState = {
   isDataLoaded: false,

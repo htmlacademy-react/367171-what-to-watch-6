@@ -3,7 +3,7 @@ import {reducer} from "./reducer";
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import {requireAuthorization} from "./actions";
-import {AuthorizationStatus} from "../components/constants/auth";
+import {AuthorizationStatus} from "../constants/auth";
 import {createAPI} from "../services/api";
 import {checkAuth} from "./api-actions";
 import {redirect} from "./middlewares/redirect";

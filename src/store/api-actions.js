@@ -1,7 +1,7 @@
 import {loadAuthInfo, loadMovies, logOut, redirectToRoute, requireAuthorization} from "./actions";
-import {AuthorizationStatus} from "../components/constants/auth";
-import {APIRoute, RoutePath} from "../components/constants/routes";
-import {transformMovie} from "../components/utils/utils";
+import {AuthorizationStatus} from "../constants/auth";
+import {APIRoute, RoutePath} from "../constants/routes";
+import {transformMovie} from "../utils/utils";
 
 export const fetchMoviesList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
