@@ -19,35 +19,38 @@ const SignIn = () => {
   );
 };
 
-const UserBlock = ({authorizationStatus, authInfo, onLogOut}) => {
+const UserBlock = ({isUserDataReceived, authorizationStatus, authInfo, onLogOut}) => {
   const history = useHistory();
   const {location} = history;
   const {pathname} = location;
 
   const style = pathname !== RoutePath.MY_LIST ? {cursor: `pointer`} : null;
 
+  const userName = isUserDataReceived ? authInfo.name : null;
+  const userPicture = isUserDataReceived ? authInfo.avatarUrl : `img/avatar.jpg`;
+
   return authorizationStatus === AuthorizationStatus.AUTH ?
-    (<>
-      <Tooltip onClick={onLogOut} title="Log out" style={{marginLeft: `auto`}}>
-        <div className="user-block" style={style} onClick={()=> history.push(RoutePath.MY_LIST)}>
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-          </div>
+    (<Tooltip onClick={onLogOut} title="Log out" style={{marginLeft: `auto`}}>
+      <div className="user-block" style={style} onClick={()=> history.push(RoutePath.MY_LIST)}>
+        <div className="user-block__avatar">
+          <img src={userPicture} alt="User avatar" width="63" height="63"/>
         </div>
-        {authInfo}
-      </Tooltip>
-    </>) : <SignIn/>;
+      </div>
+      {userName}
+    </Tooltip>) : <SignIn/>;
 };
 
 UserBlock.propTypes = {
   authorizationStatus: PropTypes.string,
-  authInfo: PropTypes.string,
-  onLogOut: PropTypes.func
+  authInfo: PropTypes.object,
+  onLogOut: PropTypes.func,
+  isUserDataReceived: PropTypes.bool
 };
 
 const mapStateToProps = (state) => ({
   authorizationStatus: state.authorizationStatus,
-  authInfo: state.authInfo
+  authInfo: state.authInfo,
+  isUserDataReceived: state.isUserDataReceived
 });
 
 const mapDispatchToProps = (dispatch) => ({

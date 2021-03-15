@@ -4,8 +4,9 @@ import {MOVIES_COUNT_PER_STEP} from "../constants/common";
 
 export const initialState = {
   isDataLoaded: false,
+  isUserDataReceived: false,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  authInfo: null,
+  authInfo: {},
   movies: [],
   currentGenre: `All genres`,
   renderedMoviesCount: MOVIES_COUNT_PER_STEP
@@ -33,6 +34,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         authInfo: action.payload,
+        isUserDataReceived: true
       };
     case ActionType.LOG_OUT:
       return {
