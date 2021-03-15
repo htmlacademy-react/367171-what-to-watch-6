@@ -47,7 +47,8 @@ const reducer = (state = initialState, action) => {
     case ActionType.RESET_FILTER:
       return {
         ...state,
-        currentGenre: `All genres`
+        currentGenre: `All genres`,
+        renderedMoviesCount: MOVIES_COUNT_PER_STEP
       };
     default:
       return state;
